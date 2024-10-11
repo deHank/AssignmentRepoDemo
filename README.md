@@ -1,6 +1,6 @@
 My groupmembers are:
 - jon rutan
-- XXXX
+- Gage Swanston
 - XXXX
 - XXXX
 
