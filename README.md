@@ -1,5 +1,5 @@
 My groupmembers are:
-- XXXX
+- jon rutan
 - XXXX
 - XXXX
 - XXXX
