@@ -2,6 +2,7 @@ My groupmembers are:
 - jon rutan
 - Gage Swanston
 - Daniel Blackin
+- Crystal Bagala
 - XXXX
 
 
