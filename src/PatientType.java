@@ -70,8 +70,10 @@ public class PatientType {
 
     public void printPatient() {
         System.out.println("----------Info for patient: " + this.getPatientFName() + "-----------");
-        System.out.println("First name: " + this.getPatientLName());
-        System.out.println("Last name: " + this.getSSN());
+        System.out.println("First name: " + this.getPatientFName());
+        System.out.println("Last name: " + this.getPatientLName());
+        System.out.println("Social Security Number: " + this.getSSN());
+        System.out.println("MRN: " + this.getMRN());
         System.out.println("Admission date: " + this.getAdminMonth() + "/" + this.getAdminDay() + "/" + this.getAdminYear());
         System.out.println("PCP: " + this.getPcp());
         System.out.println("Insured?: " + this.getInsurance());

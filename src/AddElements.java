@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 public class AddElements {
-    public static void main(String[] args) {
+    public void execute() {
         boolean on = true;
         LinkedList<PatientType> patientList = new LinkedList<PatientType>();
         PatientType patient1 = new PatientType("John", "Smith", "123-45-6789", "23132312",
