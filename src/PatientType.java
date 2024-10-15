@@ -33,10 +33,9 @@ public class PatientType {
         this.patientLName = lname;
         this.SSN = SSN;
         this.MRN = MRN;
-        //this.adminDay = aDay;
-        //this.adminMonth = aMonth;
-        //this.adminYear = aYear;
-        //this.adminDay = formatDate(int aDay, );
+        this.adminDay = aDay;
+        this.adminMonth = aMonth;
+        this.adminYear = aYear;
         this.pcp = pcp;
         this.insurance = insurance;
         this.chart = chart;
@@ -69,6 +68,16 @@ public class PatientType {
     public void setChart(String chart) { this.chart = chart; }
     public void setEvent(String event) { this.event = event; }
 
+    public void printPatient() {
+        System.out.println("----------Info for patient: " + this.getPatientFName() + "-----------");
+        System.out.println("First name: " + this.getPatientLName());
+        System.out.println("Last name: " + this.getSSN());
+        System.out.println("Admission date: " + this.getAdminMonth() + "/" + this.getAdminDay() + "/" + this.getAdminYear());
+        System.out.println("PCP: " + this.getPcp());
+        System.out.println("Insured?: " + this.getInsurance());
+        System.out.println("Chart: " + this.getChart());
+        System.out.println("Upcoming event: " + this.getEvent());
+    }
     /*
     public void formatDate(int day, int month, int year) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern( );
