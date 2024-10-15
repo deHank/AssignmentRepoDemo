@@ -5,7 +5,7 @@ import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run
 public class Main {
     //Minor change
     //Minor-change 2
-    static void showmenu1()
+    public static void showmenu1()
     {
         Scanner scanner = new Scanner(System.in);
         String choice;
@@ -15,8 +15,8 @@ public class Main {
             System.out.printf("1. Basic search...\n");
             System.out.printf("2. Advanced search...\n");
             System.out.printf("3. Print all Patients...\n");
+            System.out.printf("4. Call a doctor...\n");
             System.out.printf("9. Exit\n");
-            //Scanner scanner = new Scanner(System.in);
             choice = scanner.nextLine();
             if (choice.equalsIgnoreCase("1")) {
                 System.out.printf("--------Basic Search-------------\n");
@@ -32,11 +32,20 @@ public class Main {
             }else if (choice.equalsIgnoreCase("3")) {
                 AddElements addElements = new AddElements();
                 addElements.execute();
+            }else if (choice.equalsIgnoreCase("4")) {
+                System.out.println("Calling doctor on call...");
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+                System.out.println("But no one answered...");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
             }
         }while (!(choice.equals( "9")));
 
     }
-    static void showmenu2()
+    public static void showmenu2()
     {
         Scanner scanner = new Scanner(System.in);
         String choice;
