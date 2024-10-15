@@ -1,4 +1,4 @@
-My groupmembers are:
+My group members are:
 - Ryan Brady
 - Nick Augustus
 - Eli Borum
