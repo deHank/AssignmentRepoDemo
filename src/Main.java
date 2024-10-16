@@ -1,15 +1,15 @@
 import java.util.LinkedList;
 import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+//main class
 public class Main {
-    //Minor change
-    //Minor-change 2
+    //first method 
     public static void showmenu1()
     {
         Scanner scanner = new Scanner(System.in);
         String choice;
         do {
+            //Menu options between 1 and 4, currently takes numerical keyboard input to select
             System.out.printf("-------------Main Menu---------------\n");
             System.out.printf("What search would you like? \n");
             System.out.printf("1. Basic search...\n");
@@ -17,7 +17,11 @@ public class Main {
             System.out.printf("3. Print all Patients...\n");
             System.out.printf("4. Call a doctor...\n");
             System.out.printf("9. Exit\n");
+
+            //Takes next input for menu selection
             choice = scanner.nextLine();
+
+            //sub menu for advanced search
             if (choice.equalsIgnoreCase("1")) {
                 System.out.printf("--------Basic Search-------------\n");
                 System.out.printf("Enter patient first name...\n");
@@ -26,9 +30,13 @@ public class Main {
                 String lastName = scanner.nextLine();
                 //enter method for search algo
                 //basicPatientSearch(fname, lname)
+
+                //If selected opens sub menu for advanced search
             } else if (choice.equalsIgnoreCase("2")) {
                 showmenu2();
                 choice = "3";
+
+                //If selection
             }else if (choice.equalsIgnoreCase("3")) {
                 AddElements addElements = new AddElements();
                 addElements.execute();
