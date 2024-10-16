@@ -31,7 +31,7 @@ public class Main {
                 //enter method for search algo
                 //basicPatientSearch(fname, lname)
 
-                //If selected opens sub menu
+                //If selected opens sub menu for advanced search
             } else if (choice.equalsIgnoreCase("2")) {
                 showmenu2();
                 choice = "3";
