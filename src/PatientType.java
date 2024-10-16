@@ -3,6 +3,7 @@ public class PatientType {
     String patientLName;
     String SSN;
     String MRN;
+    String roomNumber;
     int adminDay;
     int adminMonth;
     int adminYear;
@@ -18,6 +19,7 @@ public class PatientType {
         this.patientLName = "";
         this.SSN = "";
         this.MRN = "";
+        this.roomNumber = "";
         this.adminDay = 1;
         this.adminMonth = 1;
         this.adminYear = 1900;
@@ -27,12 +29,13 @@ public class PatientType {
         this.event = "";
     }
 
-    public PatientType(String fname, String lname, String SSN, String MRN, int aDay,
+    public PatientType(String fname, String lname, String SSN, String MRN, String newRoom, int aDay,
                    int aMonth, int aYear, String pcp, boolean insurance, String chart, String event) {
         this.patientFName = fname;
         this.patientLName = lname;
         this.SSN = SSN;
         this.MRN = MRN;
+        this.roomNumber = newRoom;
         this.adminDay = aDay;
         this.adminMonth = aMonth;
         this.adminYear = aYear;
@@ -45,6 +48,7 @@ public class PatientType {
     public String getPatientLName() {return patientLName;}
     public String getSSN() {return SSN;}
     public String getMRN() {return MRN;}
+    public String getRoomNumber() {return roomNumber;}
     public int getAdminDay() {return adminDay;}
     public int getAdminMonth() {return adminMonth;}
     public int getAdminYear() {return adminYear;}
@@ -60,6 +64,7 @@ public class PatientType {
     public void setlname(String lname) { this.patientLName = lname; }
     public void setSSN(String SSN) { this.SSN = SSN; }
     public void setMRN(String MRN) { this.MRN = MRN; }
+    public void setRoomNumber(String roomNumber) { this.roomNumber = roomNumber; }
     public void setAdminDay(int aDay) { this.adminDay = aDay; }
     public void setAdminMonth(int aMonth) { this.adminMonth = aMonth; }
     public void setAdminYear(int aYear) { this.adminYear = aYear; }
@@ -73,7 +78,8 @@ public class PatientType {
         System.out.println("First name: " + this.getPatientFName());
         System.out.println("Last name: " + this.getPatientLName());
         System.out.println("Social Security Number: " + this.getSSN());
-        System.out.println("MRN: " + this.getMRN());
+        System.out.println("Patient MRN: " + this.getMRN());
+        System.out.println("Room Number: " + this.getRoomNumber());
         System.out.println("Admission date: " + this.getAdminMonth() + "/" + this.getAdminDay() + "/" + this.getAdminYear());
         System.out.println("PCP: " + this.getPcp());
         System.out.println("Insured?: " + this.getInsurance());
