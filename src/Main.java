@@ -1,10 +1,9 @@
 import java.util.LinkedList;
 import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+//This is the main class where the main function and menu functions
 public class Main {
-    //Minor change
-    //Minor-change 2
+
     public static void showmenu1()
     {
         Scanner scanner = new Scanner(System.in);
