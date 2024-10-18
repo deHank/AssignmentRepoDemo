@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+//need to add event room number!!!!!!!!!!!!!!
 public class Event {
     private String eventName;
     private String eventType;
@@ -22,7 +23,7 @@ public class Event {
     public void setEventTime(LocalDateTime eventTime) {this.eventTime = eventTime;}
 
     public void printEvent() {
-        System.out.println("Patient Event: " + getEventName() + "occuring at " + getEventTime());
+        System.out.println("Patient Event: " + getEventName() + " occuring at " + getEventTime());
         System.out.println("Type: " + getEventType());
         System.out.println("Description: " + getEventDescription());
     }

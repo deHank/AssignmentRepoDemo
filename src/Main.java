@@ -45,13 +45,29 @@ public class Main {
 
                 //Gag function for calling doctor, may be replaced by something else later
             }else if (choice.equalsIgnoreCase("4")) {
-                System.out.println("Calling doctor on call...");
+                System.out.printf("Calling doctor on call");
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+                System.out.printf(".");
+                try {
+                    Thread.sleep(900);
+                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+                System.out.printf(".");
+                try {
+                    Thread.sleep(900);
+                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+                System.out.printf(".\n");
+                try {
+                    Thread.sleep(900);
                 } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
                 System.out.println("But no one answered...");
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+                System.out.println("Good luck lol");
+                try {
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
             }
         }while (!(choice.equals( "9")));

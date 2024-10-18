@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
 public class PatientType {
     String patientFName;
     String patientLName;
@@ -78,6 +82,38 @@ public class PatientType {
     public void setEvent(String event) { this.event = event; }
     public void setSchedule(Schedule schedule) { this.schedule = schedule; }
 
+
+    public void createEvent() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of the event: ");
+        String ename = scanner.nextLine();
+        System.out.println("Enter the type of the event: ");
+        String etype = scanner.nextLine();
+        System.out.println("Enter some information about the event: ");
+        String einfo = scanner.nextLine();
+        System.out.println("Enter the day of the event: ");
+        int day = scanner.nextInt();
+        System.out.println("Enter the month of the event: ");
+        int month = scanner.nextInt();
+        System.out.println("Enter the year of the event: ");
+        int year = scanner.nextInt();
+        System.out.println("Enter time of event: ");
+        int hr = scanner.nextInt();
+        int min = scanner.nextInt();
+        LocalDateTime date = LocalDateTime.of(month,day,year,hr,min);
+        Event newEvent = new Event(ename,etype,einfo,date);
+        this.schedule.addEvent(newEvent);
+    }
+
+    public void newEvent(Event newEvent) {
+        this.schedule.addEvent(newEvent);
+    }
+
+    public void showSchedule() {
+        System.out.println("------------Paitient Schedule------------");
+        this.schedule.getAllEvents();
+    }
+
     public void printPatient() {
         System.out.println("----------Info for patient: " + this.getPatientFName() + "-----------");
         System.out.println("First name: " + this.getPatientFName());
@@ -90,7 +126,7 @@ public class PatientType {
         System.out.println("Insured?: " + this.getInsurance());
         System.out.println("Chart: " + this.getChart());
         System.out.println("Upcoming event: " + this.getEvent());
-        System.out.println(this.getSchedule().getAllEvents());
+        this.showSchedule();
     }
     /*
     public void formatDate(int day, int month, int year) {
