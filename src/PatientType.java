@@ -7,11 +7,12 @@ public class PatientType {
     int adminDay;
     int adminMonth;
     int adminYear;
-    //will be obj later
-    String pcp;
+    pcpType pcp;
     boolean insurance;
     String chart;
+    //Need to change this to schedule type
     String event;
+    Schedule schedule;
 
     public PatientType()
     {
@@ -23,14 +24,15 @@ public class PatientType {
         this.adminDay = 1;
         this.adminMonth = 1;
         this.adminYear = 1900;
-        this.pcp = "";
+        this.pcp = null;
         this.insurance = false;
         this.chart = "";
         this.event = "";
+        this.schedule = new Schedule();
     }
 
     public PatientType(String fname, String lname, String SSN, String MRN, String newRoom, int aDay,
-                   int aMonth, int aYear, String pcp, boolean insurance, String chart, String event) {
+                   int aMonth, int aYear, pcpType newpcp, boolean insurance, String chart, String event) {
         this.patientFName = fname;
         this.patientLName = lname;
         this.SSN = SSN;
@@ -39,10 +41,11 @@ public class PatientType {
         this.adminDay = aDay;
         this.adminMonth = aMonth;
         this.adminYear = aYear;
-        this.pcp = pcp;
+        this.pcp = newpcp;
         this.insurance = insurance;
         this.chart = chart;
         this.event = event;
+        this.schedule = new Schedule();
     }
     public String getPatientFName() {return patientFName;}
     public String getPatientLName() {return patientLName;}
@@ -52,10 +55,11 @@ public class PatientType {
     public int getAdminDay() {return adminDay;}
     public int getAdminMonth() {return adminMonth;}
     public int getAdminYear() {return adminYear;}
-    public String getPcp() {return pcp;}
+    public pcpType getPcp() {return pcp;}
     public boolean getInsurance() {return insurance;}
     public String getChart() {return chart;}
     public String getEvent() {return event;}
+    public Schedule getSchedule() {return schedule;}
 
     public void setfname(String fname)
     {
@@ -68,10 +72,11 @@ public class PatientType {
     public void setAdminDay(int aDay) { this.adminDay = aDay; }
     public void setAdminMonth(int aMonth) { this.adminMonth = aMonth; }
     public void setAdminYear(int aYear) { this.adminYear = aYear; }
-    public void setPcp(String pcp) { this.pcp = pcp; }
+    public void setPcp(pcpType pcp) { this.pcp = pcp; }
     public void setInsurance(boolean insurance) { this.insurance = insurance; }
     public void setChart(String chart) { this.chart = chart; }
     public void setEvent(String event) { this.event = event; }
+    public void setSchedule(Schedule schedule) { this.schedule = schedule; }
 
     public void printPatient() {
         System.out.println("----------Info for patient: " + this.getPatientFName() + "-----------");
@@ -81,10 +86,11 @@ public class PatientType {
         System.out.println("Patient MRN: " + this.getMRN());
         System.out.println("Room Number: " + this.getRoomNumber());
         System.out.println("Admission date: " + this.getAdminMonth() + "/" + this.getAdminDay() + "/" + this.getAdminYear());
-        System.out.println("PCP: " + this.getPcp());
+        System.out.println("PCP: Dr." + this.pcp.drLname);
         System.out.println("Insured?: " + this.getInsurance());
         System.out.println("Chart: " + this.getChart());
         System.out.println("Upcoming event: " + this.getEvent());
+        System.out.println(this.getSchedule().getAllEvents());
     }
     /*
     public void formatDate(int day, int month, int year) {
