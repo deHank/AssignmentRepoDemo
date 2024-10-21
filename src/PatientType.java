@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
+//Class for creating patient objects
 public class PatientType {
     String patientFName;
     String patientLName;
@@ -18,6 +19,7 @@ public class PatientType {
     String event;
     Schedule schedule;
 
+    //default constructor
     public PatientType()
     {
         this.patientFName = "";
@@ -35,6 +37,7 @@ public class PatientType {
         this.schedule = new Schedule();
     }
 
+    //initialized constructor
     public PatientType(String fname, String lname, String SSN, String MRN, String newRoom, int aDay,
                    int aMonth, int aYear, pcpType newpcp, boolean insurance, String chart, String event) {
         this.patientFName = fname;
@@ -51,6 +54,8 @@ public class PatientType {
         this.event = event;
         this.schedule = new Schedule();
     }
+
+    //getters
     public String getPatientFName() {return patientFName;}
     public String getPatientLName() {return patientLName;}
     public String getSSN() {return SSN;}
@@ -65,6 +70,7 @@ public class PatientType {
     public String getEvent() {return event;}
     public Schedule getSchedule() {return schedule;}
 
+    //setters
     public void setfname(String fname)
     {
         this.patientFName = fname;
@@ -82,7 +88,7 @@ public class PatientType {
     public void setEvent(String event) { this.event = event; }
     public void setSchedule(Schedule schedule) { this.schedule = schedule; }
 
-
+    //Method for creating a new event for the patient via user input
     public void createEvent() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the name of the event: ");
@@ -101,19 +107,26 @@ public class PatientType {
         int hr = scanner.nextInt();
         int min = scanner.nextInt();
         LocalDateTime date = LocalDateTime.of(month,day,year,hr,min);
-        Event newEvent = new Event(ename,etype,einfo,date);
+        System.out.println("Enter the patient room number");
+        String room = scanner.nextLine();
+        Event newEvent = new Event(ename,etype,einfo,date,room);
         this.schedule.addEvent(newEvent);
     }
 
+    //Method for adding already initalized event to patient schedule
     public void newEvent(Event newEvent) {
         this.schedule.addEvent(newEvent);
     }
 
+    //prints entire patient schedule
+    //need to find way to organize schedule by date
     public void showSchedule() {
         System.out.println("------------Paitient Schedule------------");
-        this.schedule.getAllEvents();
+        this.schedule.printAllEvents();
+
     }
 
+    //Method for printing all patient information
     public void printPatient() {
         System.out.println("----------Info for patient: " + this.getPatientFName() + "-----------");
         System.out.println("First name: " + this.getPatientFName());
@@ -128,11 +141,4 @@ public class PatientType {
         System.out.println("Upcoming event: " + this.getEvent());
         this.showSchedule();
     }
-    /*
-    public void formatDate(int day, int month, int year) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern( );
-
-    }*/
-    
-
 }

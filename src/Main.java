@@ -3,7 +3,7 @@ import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run
 
 //main class
 public class Main {
-    //first method 
+    //method to create main menu that other menus stem from
     public static void showmenu1()
     {
         Scanner scanner = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class Main {
             choice = scanner.nextLine();
 
             //sub menu for advanced search
-            //VVV change this if/else-if structure to a switch structure VVV
+            //VVV Need to change this if/else-if structure to a switch structure VVV
             if (choice.equalsIgnoreCase("1")) {
                 System.out.printf("--------Basic Search-------------\n");
                 System.out.printf("Enter patient first name...\n");
@@ -46,29 +46,7 @@ public class Main {
                 //Gag function for calling doctor, may be replaced by something else later
             }else if (choice.equalsIgnoreCase("4")) {
                 System.out.printf("Calling doctor on call");
-                try {
-                    Thread.sleep(800);
-                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
-                System.out.printf(".");
-                try {
-                    Thread.sleep(900);
-                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
-                System.out.printf(".");
-                try {
-                    Thread.sleep(900);
-                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
-                System.out.printf(".\n");
-                try {
-                    Thread.sleep(900);
-                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
-                System.out.println("But no one answered...");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
-                System.out.println("Good luck lol");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+                callingDr();
             }
         }while (!(choice.equals( "9")));
 
@@ -130,7 +108,32 @@ public class Main {
         }while(!(choice.equals("9")));
     }
 
+    //gag function pretending to call Dr
+    public static void callingDr()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            try {
+                Thread.sleep(900);
+            } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+            System.out.printf(".");
+            if (i == 2)
+                System.out.printf("\n");
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+        System.out.println("But no one answered...");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+        System.out.println("Good luck lol");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+    }
 
+    //main function
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.

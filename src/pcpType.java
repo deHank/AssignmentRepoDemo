@@ -1,10 +1,12 @@
 import java.util.List;
 import java.util.ArrayList;
+
+//Class for creating objects for Primary Care Providers
 public class pcpType {
     String drFname;
     String drLname;
     String specialty;
-    //List<PatientType> patient; Not sure if assigning dr to patient is necessary if patient is already assinged in its class
+    //Chose not to assign patient to Dr since Dr is already assigned to patient in PatientType class
 
     //default constructor
     public pcpType() {
