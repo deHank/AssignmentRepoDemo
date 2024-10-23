@@ -19,7 +19,7 @@ public class Window extends JFrame{
         super.getContentPane().add(borderLayout, comp);
     }
 
-    public void setContentPanel(Panel panel){
+    public void setContentPanel(MainPanel panel){
         super.setContentPane(panel);
         super.pack(); // Set size to preferred size of buttons and stuff in the content panel
     }

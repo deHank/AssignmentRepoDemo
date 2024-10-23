@@ -22,7 +22,9 @@ public class Button extends JButton{
     }
 
     public void setDimensions(int width, int height){
+        super.setMinimumSize(new Dimension(width, height));
         super.setPreferredSize(new Dimension(width, height));
+        super.setMaximumSize(new Dimension(width, height));
     }
 
     public void setOnClick(ActionListener action){

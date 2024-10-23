@@ -1,7 +1,7 @@
 package UI;
 
 // import java.awt.BorderLayout;
-// import java.awt.Component;
+import java.awt.Component;
 // import java.awt.event.ActionEvent;
 // import java.awt.event.ActionListener;
 
@@ -9,6 +9,7 @@ package UI;
 // import javax.swing.JFrame;
 // import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import javax.swing.GroupLayout;
 
 public class GUI{
 
@@ -21,22 +22,32 @@ public class GUI{
         }
 
         Window window = new Window("Test", 0, 0, 0, 0);
-        Panel mainPanel = new Panel(true);
-        Panel otherPanel = new Panel(/*3, 3, 4, 4*/);
+        MainPanel mainPanel = new MainPanel(true);
+        GroupLayoutPanel otherPanel = new GroupLayoutPanel();
 
-        Button button1 = new Button("balls", 15, 10, 100, 20);
-        // Dropdown dropdown = new Dropdown({"a", "b", "c"});
-        TextInput input1 = new TextInput("", 24);
-        Button button2 = new Button("balls", 15, 10, 100, 20);
-        Button button3 = new Button("balls", 15, 10, 100, 20);
-        Button button4 = new Button("balls", 15, 10, 100, 20);
+        Button button1 = new Button("test", 15, 10, 115, 20);
+        TextInput input1 = new TextInput("", 12);
+        Button button2 = new Button("test", 15, 10, 115, 20);
+        Button button3 = new Button("test", 15, 10, 115, 20);
+        // Button button4 = new Button("test", 15, 10, 115, 20);
+
+        String options[] = {"Test1", "Test2", "Test3"};
+        Dropdown dropdown = new Dropdown(options);
 
         // int[] gridx = {0, 1};
-        // Component items = {button1, input1};
+        Component items1[] = {button1, button2, dropdown};
+        Component items2[] = {input1, button3};
 
-        otherPanel.addItem(0, 0, button1);
-        otherPanel.addItem(0, 1, input1);
-        otherPanel.addItem(1, 0, button2);
+        Component items3[] = {button1, input1};
+        Component items4[] = {button2, button3};
+
+        otherPanel.addHorizontalParallelGroup(items1, GroupLayout.Alignment.LEADING);
+        otherPanel.addHorizontalParallelGroup(items2, GroupLayout.Alignment.LEADING);
+
+        otherPanel.addVerticalParallelGroup(items3, GroupLayout.Alignment.LEADING);
+        otherPanel.addVerticalParallelGroup(items4, GroupLayout.Alignment.LEADING);
+        otherPanel.addVerticalItem(dropdown);
+        otherPanel.finish();
 
 
         mainPanel.addItem(otherPanel);
