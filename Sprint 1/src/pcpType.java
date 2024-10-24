@@ -1,6 +1,3 @@
-import java.util.List;
-import java.util.ArrayList;
-
 //Class for creating objects for Primary Care Providers
 public class pcpType {
     String drFname;

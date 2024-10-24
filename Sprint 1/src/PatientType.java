@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -9,6 +8,9 @@ public class PatientType {
     String SSN;
     String MRN;
     String roomNumber;
+    int birthDay;
+    int birthMonth;
+    int birthYear;
     int adminDay;
     int adminMonth;
     int adminYear;
@@ -18,6 +20,12 @@ public class PatientType {
     //Need to change this to schedule type
     String event;
     Schedule schedule;
+    int disDay;
+    int disMonth;
+    int disYear;
+    String gender;
+    String diagnosis;
+    String pcpString;
 
     //default constructor
     public PatientType()
@@ -27,6 +35,9 @@ public class PatientType {
         this.SSN = "";
         this.MRN = "";
         this.roomNumber = "";
+        this.birthDay = 1;
+        this.birthMonth = 1;
+        this.birthYear = 1900;
         this.adminDay = 1;
         this.adminMonth = 1;
         this.adminYear = 1900;
@@ -35,16 +46,25 @@ public class PatientType {
         this.chart = "";
         this.event = "";
         this.schedule = new Schedule();
+        this.disDay = 1;
+        this.disMonth = 1;
+        this.disYear = 1900;
+        this.gender = "";
+        this.diagnosis = "";
+        this.pcpString = "";
     }
 
     //initialized constructor
-    public PatientType(String fname, String lname, String SSN, String MRN, String newRoom, int aDay,
-                   int aMonth, int aYear, pcpType newpcp, boolean insurance, String chart, String event) {
+    public PatientType(String fname, String lname, String SSN, String MRN, String newRoom, int birthDay, int birthMonth, int birthYear, int aDay,
+                   int aMonth, int aYear, pcpType newpcp, boolean insurance, String chart, String event, int disDay, int disMonth, int disYear, String gender, String diagnosis, String pcpString ) {
         this.patientFName = fname;
         this.patientLName = lname;
         this.SSN = SSN;
         this.MRN = MRN;
         this.roomNumber = newRoom;
+        this.birthDay = birthDay;
+        this.birthMonth = birthMonth;
+        this.birthYear = birthYear;
         this.adminDay = aDay;
         this.adminMonth = aMonth;
         this.adminYear = aYear;
@@ -53,6 +73,12 @@ public class PatientType {
         this.chart = chart;
         this.event = event;
         this.schedule = new Schedule();
+        this.disDay = disDay;
+        this.disMonth = disMonth;
+        this.disYear = disYear;
+        this.gender = gender;
+        this.diagnosis = diagnosis;
+        this.pcpString = pcpString;
     }
 
     //getters
@@ -61,6 +87,9 @@ public class PatientType {
     public String getSSN() {return SSN;}
     public String getMRN() {return MRN;}
     public String getRoomNumber() {return roomNumber;}
+    public int getBirthDay() {return birthDay;}
+    public int getBirthMonth() {return birthMonth;}
+    public int getBirthYear() {return birthYear;}
     public int getAdminDay() {return adminDay;}
     public int getAdminMonth() {return adminMonth;}
     public int getAdminYear() {return adminYear;}
@@ -69,16 +98,23 @@ public class PatientType {
     public String getChart() {return chart;}
     public String getEvent() {return event;}
     public Schedule getSchedule() {return schedule;}
+    public int getDisDay() {return disDay;}
+    public int getDisMonth() {return disMonth;}
+    public int getDisYear() {return disYear;}
+    public String getGender() {return gender;}
+    public String getDiagnosis() {return diagnosis;}
+    public String getPcpString() {return pcpString;}
+
 
     //setters
-    public void setfname(String fname)
-    {
-        this.patientFName = fname;
-    }
+    public void setfname(String fname) { this.patientFName = fname;}
     public void setlname(String lname) { this.patientLName = lname; }
     public void setSSN(String SSN) { this.SSN = SSN; }
     public void setMRN(String MRN) { this.MRN = MRN; }
     public void setRoomNumber(String roomNumber) { this.roomNumber = roomNumber; }
+    public void setBirthDay(int birthDay) { this.birthDay = birthDay; }
+    public void setBirthMonth(int birthMonth) { this.birthMonth = birthMonth; }
+    public void setBirthYear(int birthYear) { this.birthYear = birthYear; }
     public void setAdminDay(int aDay) { this.adminDay = aDay; }
     public void setAdminMonth(int aMonth) { this.adminMonth = aMonth; }
     public void setAdminYear(int aYear) { this.adminYear = aYear; }
@@ -87,6 +123,12 @@ public class PatientType {
     public void setChart(String chart) { this.chart = chart; }
     public void setEvent(String event) { this.event = event; }
     public void setSchedule(Schedule schedule) { this.schedule = schedule; }
+    public void setDisDay(int disDay) { this.disDay = disDay; }
+    public void setDisMonth(int disMonth) { this.disMonth = disMonth; }
+    public void setDisYear(int disYear) { this.disYear = disYear; }
+    public void setGender(String gender) { this.gender = gender; }
+    public void setDiagnosis(String diagnosis) { this.diagnosis = diagnosis; }
+    public void setPcpString(String pcpString) { this.pcpString = pcpString; }
 
     //Method for creating a new event for the patient via user input
     public void createEvent() {
@@ -111,6 +153,7 @@ public class PatientType {
         String room = scanner.nextLine();
         Event newEvent = new Event(ename,etype,einfo,date,room);
         this.schedule.addEvent(newEvent);
+
     }
 
     //Method for adding already initalized event to patient schedule
@@ -131,10 +174,13 @@ public class PatientType {
         System.out.println("----------Info for patient: " + this.getPatientFName() + "-----------");
         System.out.println("First name: " + this.getPatientFName());
         System.out.println("Last name: " + this.getPatientLName());
+        System.out.println("Gender: " + this.getGender());
+        System.out.println("DOB: " + this.getBirthMonth() + "/" + this.getBirthDay() + "/" + this.getBirthYear());
         System.out.println("Social Security Number: " + this.getSSN());
         System.out.println("Patient MRN: " + this.getMRN());
         System.out.println("Room Number: " + this.getRoomNumber());
         System.out.println("Admission date: " + this.getAdminMonth() + "/" + this.getAdminDay() + "/" + this.getAdminYear());
+        System.out.println("Discharge date: " + this.getDisMonth() + "/" + this.getDisDay() + "/" + this.getDisYear());
         System.out.println("PCP: Dr." + this.pcp.drLname);
         System.out.println("Insured?: " + this.getInsurance());
         System.out.println("Chart: " + this.getChart());

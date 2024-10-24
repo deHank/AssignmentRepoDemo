@@ -1,11 +1,10 @@
-import java.util.LinkedList;
+import java.sql.SQLException;
 import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 
 //main class
 public class Main {
     //method to create main menu that other menus stem from
-    public static void showmenu1()
-    {
+    public static void showmenu1(){
         Scanner scanner = new Scanner(System.in);
         String choice;
         do {
@@ -31,7 +30,7 @@ public class Main {
                 System.out.printf("Enter patient last name...\n");
                 String lastName = scanner.nextLine();
                 //enter method for search algo
-                //basicPatientSearch(fname, lname)
+                basicPatientSearch(firstName, lastName);
 
                 //If selected opens sub menu for advanced search
             } else if (choice.equalsIgnoreCase("2")) {
@@ -131,6 +130,16 @@ public class Main {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+    }
+
+    public static void basicPatientSearch(String fname, String lname) {
+        PatientType patient = PatientDBService.searchPatientName(fname,lname);
+        if (patient != null){
+            System.out.printf("Patient found at %s\n", fname);
+            patient.printPatient();
+        }else {
+            System.out.printf("Patient not found! \n");
+        }
     }
 
     //main function
