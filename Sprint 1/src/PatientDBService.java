@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 
 //change the multiple methods into one method that varies the string query depending on the menu instruction chosen
+//pls ignore how bulky this is, it will be streamlined later
 public class PatientDBService {
     public static PatientType searchPatientName(String fName, String lName) {
         PatientType patient = null;

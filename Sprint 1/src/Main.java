@@ -4,7 +4,7 @@ import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run
 //main class
 public class Main {
     //method to create main menu that other menus stem from
-    public static void showmenu1(){
+    public static void showmenu1() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         String choice;
         do {
@@ -39,8 +39,10 @@ public class Main {
 
                 //If selection is 3, print entire list of patients
             }else if (choice.equalsIgnoreCase("3")) {
-                AddElements addElements = new AddElements();
-                addElements.execute();
+                //AddElements addElements = new AddElements();
+                //addElements.execute();
+                //Create a function that will print the top 10 patients, and give them the option to print the list of the next 10 patients
+
 
                 //Gag function for calling doctor, may be replaced by something else later
             }else if (choice.equalsIgnoreCase("4")) {
@@ -52,8 +54,7 @@ public class Main {
     }
 
     //method for advanced menu, called if choice 2 is selected
-    public static void showmenu2()
-    {
+    public static void showmenu2() throws SQLException {
         //scanner for taking next keyboard numerical input for choice
         //be sure to add error exception in case of incorrect input
         Scanner scanner = new Scanner(System.in);
@@ -76,7 +77,7 @@ public class Main {
                 String room = scanner.nextLine();
 
                 //call to SQL database via room number goes here, takes one parameter VVV
-                //roomSearch(room);
+                roomSearch(room);
 
             //Choice for conducting search by MRN (Medical Record Number)
             } else if (choice.equalsIgnoreCase("2")) {
@@ -142,8 +143,18 @@ public class Main {
         }
     }
 
+    public static void roomSearch(String roomNum) throws SQLException {
+        PatientType patient = PatientDBService.searchPatientByRoom(roomNum);
+        if (patient != null){
+            System.out.printf("Patient found at %s\n", roomNum);
+            patient.printPatient();
+        }else {
+            System.out.printf("Patient not found! \n");
+        }
+    }
+
     //main function
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         PatientType patient = new PatientType();
