@@ -1,4 +1,4 @@
-package UI;
+package UI.Parts;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.ParallelGroup;

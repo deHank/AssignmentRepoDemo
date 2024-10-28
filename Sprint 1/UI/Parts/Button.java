@@ -1,4 +1,4 @@
-package UI;
+package UI.Parts;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

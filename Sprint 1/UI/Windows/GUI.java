@@ -1,15 +1,9 @@
-package UI;
+package UI.Windows;
 
-// import java.awt.BorderLayout;
 import java.awt.Component;
-// import java.awt.event.ActionEvent;
-// import java.awt.event.ActionListener;
-
-// import javax.swing.JButton;
-// import javax.swing.JFrame;
-// import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.GroupLayout;
+import UI.Parts.*;
 
 public class GUI{
 
@@ -49,8 +43,9 @@ public class GUI{
         otherPanel.addVerticalItem(dropdown);
         otherPanel.finish();
 
+        ScrollPanel scrollPanel = new ScrollPanel(otherPanel);
 
-        mainPanel.addItem(otherPanel);
+        mainPanel.addItem(scrollPanel);
         window.setContentPanel(mainPanel);
         window.setVisible(true);
 
