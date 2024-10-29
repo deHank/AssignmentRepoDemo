@@ -3,10 +3,8 @@ package UI.Windows;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
 
-public class HomePage2 {
+public class RoomView {
 
 	private JFrame frame;
 
@@ -17,7 +15,7 @@ public class HomePage2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HomePage2 window = new HomePage2();
+					RoomView window = new RoomView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,7 +27,7 @@ public class HomePage2 {
 	/**
 	 * Create the application.
 	 */
-	public HomePage2() {
+	public RoomView() {
 		initialize();
 	}
 
@@ -40,7 +38,7 @@ public class HomePage2 {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Home Page");
+		frame.getContentPane().setLayout(null);
 	}
 
 }
