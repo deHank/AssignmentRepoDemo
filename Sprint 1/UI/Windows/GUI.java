@@ -1,9 +1,9 @@
 package UI.Windows;
 
-import java.awt.Component;
-import javax.swing.UIManager;
-import javax.swing.GroupLayout;
 import UI.Parts.*;
+import java.awt.Component;
+import javax.swing.GroupLayout;
+import javax.swing.UIManager;
 
 public class GUI{
 
