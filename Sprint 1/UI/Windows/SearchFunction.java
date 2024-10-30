@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
@@ -35,6 +37,8 @@ public class SearchFunction {
 				try {
 					SearchFunction window = new SearchFunction();
 					window.frame.setVisible(true);
+					window.frame.setLocationRelativeTo(null);
+					window.frame.setMinimumSize(new Dimension(435, 345));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,19 +58,20 @@ public class SearchFunction {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 545, 443);
+		frame.setTitle("Search Page");
+		frame.setBounds(100, 100, 435, 345);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		searchBar = new JTextField();
 		searchBar.setFont(new Font("Cambria", Font.BOLD, 15));
-		searchBar.setBounds(71, 0, 264, 34);
+		searchBar.setBounds(107, 5, 259, 32);
 		frame.getContentPane().add(searchBar);
 		searchBar.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Search:");
 		lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 17));
-		lblNewLabel.setBounds(10, 0, 76, 34);
+		lblNewLabel.setBounds(40, 2, 76, 34);
 		frame.getContentPane().add(lblNewLabel);
 		
 		separator_1 = new JSeparator();
@@ -84,17 +89,29 @@ public class SearchFunction {
 			}
 		});
 		searchButton.setFont(new Font("Cambria", Font.BOLD, 15));
-		searchButton.setBounds(343, 22, 57, 43);
+		searchButton.setBounds(367, 22, 57, 43);
 		frame.getContentPane().add(searchButton);
 		
 		lblAdvanced = new JLabel("Advanced:");
 		lblAdvanced.setFont(new Font("Cambria", Font.BOLD, 17));
-		lblAdvanced.setBounds(10, 45, 106, 34);
+		lblAdvanced.setBounds(40, 43, 106, 34);
 		frame.getContentPane().add(lblAdvanced);
 		
-		JComboBox advList = new JComboBox();
+		String advancedSearchOptions[] = {"Last Name First Name", "Room Number", "Medical Record Number", "Primary Care Provider", "Admission Date"};
+		JComboBox advList = new JComboBox(advancedSearchOptions);
 		advList.setFont(new Font("Cambria", Font.BOLD, 15));
-		advList.setBounds(102, 45, 233, 34);
+		advList.setBounds(129, 45, 233, 34);
 		frame.getContentPane().add(advList);
+		
+		
+		JButton backButton = new JButton("🔙");
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HomePage.main(null);
+				frame.dispose();
+			}
+		});
+		backButton.setBounds(6, 6, 30, 30);
+		frame.getContentPane().add(backButton);
 	}
 }

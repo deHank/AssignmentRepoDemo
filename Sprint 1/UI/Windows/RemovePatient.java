@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class AddPatient {
+public class RemovePatient {
 
 	private JFrame frame;
 
@@ -18,7 +18,7 @@ public class AddPatient {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddPatient window = new AddPatient();
+					RemovePatient window = new RemovePatient();
 					window.frame.setVisible(true);
 					window.frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -31,7 +31,7 @@ public class AddPatient {
 	/**
 	 * Create the application.
 	 */
-	public AddPatient() {
+	public RemovePatient() {
 		initialize();
 	}
 

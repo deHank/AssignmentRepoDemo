@@ -1,5 +1,7 @@
 package UI.Windows;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -11,10 +13,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.Dimension;
 
-public class PatientData {
+public class EditPatientData {
 
 	private JFrame frame;
 	private JTextField patientName;
@@ -23,23 +23,24 @@ public class PatientData {
 	private JTextField notes;
 	private JTextField roomNum;
 	private JTextField PCP;
-	private JButton editButton;
-	
-	int currentScreenHeight, currentScreenWidth;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-
 		int currentScreenHeight, currentScreenWidth;
+		currentScreenHeight = 450;
+		currentScreenWidth = 450;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PatientData window = new PatientData();
+					EditPatientData window = new EditPatientData();
 					window.frame.setVisible(true);
 					window.frame.setLocationRelativeTo(null);
 					window.frame.setMinimumSize(new Dimension(450, 450));
+
+					window.frame.setSize(currentScreenWidth, currentScreenHeight);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,7 +51,7 @@ public class PatientData {
 	/**
 	 * Create the application.
 	 */
-	public PatientData() {
+	public EditPatientData() {
 		initialize();
 	}
 
@@ -59,8 +60,7 @@ public class PatientData {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setTitle("Patient Data");
+		frame.setTitle("Edit Patient Data");
 		frame.getContentPane().setFont(new Font("Cambria", Font.PLAIN, 11));
 		frame.setBounds(100, 100, 450, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,25 +140,22 @@ public class PatientData {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				HomePage.main(null);
+				exitOrNo.main(null);
 			}
 		});
 		backButton.setBounds(6, 6, 30, 30);
-		backButton.setMinimumSize(new Dimension (30, 30));
-		backButton.setMaximumSize(new Dimension (30, 30));
 		frame.getContentPane().add(backButton);
 		
-		editButton = new JButton("Edit");
-		editButton.addActionListener(new ActionListener() {
+		JButton saveAndLeave = new JButton("Save And Leave");
+		saveAndLeave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditPatientData.main(null);
 				frame.dispose();
+				PatientData.main(null);
 			}
 		});
-		editButton.setBackground(new Color(255, 255, 255));
-		editButton.setBounds(321, 374, 123, 29);
-		editButton.setMinimumSize(new Dimension (123, 29));
-		editButton.setMaximumSize(new Dimension (123, 29));
-		frame.getContentPane().add(editButton);
+		saveAndLeave.setBackground(new Color(255, 255, 255));
+		saveAndLeave.setBounds(321, 374, 123, 29);
+		frame.getContentPane().add(saveAndLeave);
 	}
+
 }

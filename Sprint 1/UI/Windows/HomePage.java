@@ -1,5 +1,6 @@
 package UI.Windows;
 
+import java.awt.Container;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -27,6 +28,7 @@ public class HomePage {
 				try {
 					HomePage window = new HomePage();
 					window.frame.setVisible(true);
+					window.frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,23 +48,42 @@ public class HomePage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 887, 301);
+		frame.setBounds(100, 100, 905, 278);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton searchButton = new JButton("Search");
+		searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SearchFunction.main(null);
+				frame.dispose();
+			}
+		});
 		searchButton.setFont(new Font("Cambria", Font.BOLD, 35));
 		
-		JButton addPatientButton = new JButton("Add Pateint/Event");
+		JButton addPatientButton = new JButton("Add Patient/Event");
 		addPatientButton.setFont(new Font("Cambria", Font.BOLD, 35));
+		addPatientButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddPatient.main(null);
+				frame.dispose();
+			}
+		});
 		
-		JButton removePatientButton = new JButton("Remove Pateint/Event");
+		JButton removePatientButton = new JButton("Remove Patient/Event");
 		removePatientButton.setFont(new Font("Cambria", Font.BOLD, 35));
+		removePatientButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RemovePatient.main(null);
+				frame.dispose();
+			}
+		});
 		
 		JButton roomViewButton = new JButton("Room View");
 		roomViewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+					RoomView.main(null);
+					frame.dispose();
+				}
 		});
 		roomViewButton.setFont(new Font("Cambria", Font.BOLD, 35));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -102,5 +123,10 @@ public class HomePage {
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
+	}
+
+	public static Container getContentPane() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -34,6 +34,7 @@ public class LoginWindow {
 				try {
 					LoginWindow window = new LoginWindow();
 					window.frame.setVisible(true);
+					window.frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -104,7 +105,7 @@ public class LoginWindow {
 				if (username.contains("User") && password.contains("1234")){
 					textField.setText(null);
 					passwordField.setText(null);
-					GUI.main(null);
+					HomePage.main(null);
 					frame.dispose();
 				}
 				else {

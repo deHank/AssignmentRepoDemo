@@ -1,13 +1,10 @@
 package UI.Windows;
 
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class AddPatient {
+public class Test {
 
 	private JFrame frame;
 
@@ -18,9 +15,8 @@ public class AddPatient {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddPatient window = new AddPatient();
+					Test window = new Test();
 					window.frame.setVisible(true);
-					window.frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -31,7 +27,7 @@ public class AddPatient {
 	/**
 	 * Create the application.
 	 */
-	public AddPatient() {
+	public Test() {
 		initialize();
 	}
 
@@ -42,16 +38,6 @@ public class AddPatient {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JButton backButton = new JButton("🔙");
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				HomePage.main(null);
-				frame.dispose();
-			}
-		});
-		backButton.setBounds(6, 6, 30, 30);
-		frame.getContentPane().add(backButton);
 	}
 
 }
