@@ -25,14 +25,12 @@ public class PatientData {
 	private JTextField PCP;
 	private JButton editButton;
 	
-	int currentScreenHeight, currentScreenWidth;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 
-		int currentScreenHeight, currentScreenWidth;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -40,11 +38,13 @@ public class PatientData {
 					window.frame.setVisible(true);
 					window.frame.setLocationRelativeTo(null);
 					window.frame.setMinimumSize(new Dimension(450, 450));
+					window.frame.setBounds(100, 100, 450, 450);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		
 	}
 
 	/**
@@ -59,12 +59,14 @@ public class PatientData {
 	 */
 	private void initialize(String[] args) {
 		frame = new JFrame();
+		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setTitle("Patient Data");
 		frame.getContentPane().setFont(new Font("Cambria", Font.PLAIN, 11));
 		frame.setBounds(100, 100, 450, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		patientName = new JTextField(args[0]);
 		patientName.setEditable(false);

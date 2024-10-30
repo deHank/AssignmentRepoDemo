@@ -23,15 +23,11 @@ public class EditPatientData {
 	private JTextField notes;
 	private JTextField roomNum;
 	private JTextField PCP;
-	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		int currentScreenHeight, currentScreenWidth;
-		currentScreenHeight = 450;
-		currentScreenWidth = 450;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -39,8 +35,7 @@ public class EditPatientData {
 					window.frame.setVisible(true);
 					window.frame.setLocationRelativeTo(null);
 					window.frame.setMinimumSize(new Dimension(450, 450));
-
-					window.frame.setSize(currentScreenWidth, currentScreenHeight);
+					window.frame.setBounds(100, 100, 450, 450);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,6 +60,7 @@ public class EditPatientData {
 		frame.setBounds(100, 100, 450, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		patientName = new JTextField(args[0]);
 		patientName.setEditable(false);

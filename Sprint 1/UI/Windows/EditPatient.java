@@ -27,7 +27,6 @@ public class EditPatient {
 	private JTextField patientNum;
 	private JTextField roomNum;
 	private JTextField PCP;
-	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -43,8 +42,7 @@ public class EditPatient {
 					window.frame.setVisible(true);
 					window.frame.setLocationRelativeTo(null);
 					window.frame.setMinimumSize(new Dimension(450, 450));
-
-					window.frame.setSize(currentScreenWidth, currentScreenHeight);
+					window.frame.setBounds(450, 450, currentScreenWidth, currentScreenWidth);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -149,6 +147,7 @@ public class EditPatient {
 		noteArea.setBounds(10, 292, 434, 70);
 		frame.getContentPane().add(noteArea);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane noteScroll = new JScrollPane(noteArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		//ControlHost.add(noteScroll);
 	}
 }
