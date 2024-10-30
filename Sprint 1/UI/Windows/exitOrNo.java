@@ -26,7 +26,7 @@ public class exitOrNo{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					exitOrNo window = new exitOrNo();
+					exitOrNo window = new exitOrNo(args);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,14 +38,14 @@ public class exitOrNo{
 	/**
 	 * Create the application.
 	 */
-	public exitOrNo() {
-		initialize();
+	public exitOrNo(String[] args) {
+		initialize(args);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(String[] args) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 250, 100);
 		frame.setLocationRelativeTo(null);
@@ -57,7 +57,8 @@ public class exitOrNo{
 		frame.getContentPane().add(exitButton);
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PatientData.main(null);
+				String newArgs[] = {args[0], args[1], args[2], args[3], args[4], args[5]};
+				PatientData.main(newArgs);
 				frame.dispose();
 			}
 		});
@@ -66,7 +67,8 @@ public class exitOrNo{
 		exAndSave.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		exAndSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PatientData.main(null);
+				String newArgs[] = {args[6], args[7], args[8], args[9], args[10], args[11]};
+				PatientData.main(newArgs);
 				frame.dispose();
 			}
 		});

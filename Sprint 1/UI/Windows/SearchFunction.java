@@ -27,6 +27,8 @@ public class SearchFunction {
 	private JSeparator separator_1;
 	private JButton searchButton;
 	private JLabel lblAdvanced;
+	private JScrollPane scrollPane;
+	private JComboBox advList;
 
 	/**
 	 * Launch the application.
@@ -78,7 +80,7 @@ public class SearchFunction {
 		separator_1.setBounds(10, 97, 414, 2);
 		frame.getContentPane().add(separator_1);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 414, 192);
 		frame.getContentPane().add(scrollPane);
@@ -98,7 +100,7 @@ public class SearchFunction {
 		frame.getContentPane().add(lblAdvanced);
 		
 		String advancedSearchOptions[] = {"Last Name First Name", "Room Number", "Medical Record Number", "Primary Care Provider", "Admission Date"};
-		JComboBox advList = new JComboBox(advancedSearchOptions);
+		advList = new JComboBox(advancedSearchOptions);
 		advList.setFont(new Font("Cambria", Font.BOLD, 15));
 		advList.setBounds(129, 45, 233, 34);
 		frame.getContentPane().add(advList);
@@ -113,5 +115,41 @@ public class SearchFunction {
 		});
 		backButton.setBounds(6, 6, 30, 30);
 		frame.getContentPane().add(backButton);
+
+		addSearchFunction(searchButton);
+	}
+
+	private void addSearchFunction(JButton button){
+		button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+				String searchType = (String) advList.getSelectedItem();
+				String searchParam = searchBar.getText();
+				//TODO
+				//String names[] = function(searchType, searchParam);
+				//populateScrollPane(names);
+            }
+        });
+	}
+
+	private void addGetPatientDataFunction(JButton button){
+		button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+				//TODO
+				//String patientData[] = function(button.getText());
+				//PatientData.main(patientData);
+				frame.dispose();
+            }
+        });
+	}
+
+	private void populateScrollPane(String names[]){
+		for(String name : names){
+			// String firstNameLastName[] = name.split(" ");
+			JButton button = new JButton(name);
+			addGetPatientDataFunction(button);
+			this.scrollPane.add(button);
+		}
 	}
 }

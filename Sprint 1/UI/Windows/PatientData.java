@@ -36,7 +36,7 @@ public class PatientData {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PatientData window = new PatientData();
+					PatientData window = new PatientData(args);
 					window.frame.setVisible(true);
 					window.frame.setLocationRelativeTo(null);
 					window.frame.setMinimumSize(new Dimension(450, 450));
@@ -50,14 +50,14 @@ public class PatientData {
 	/**
 	 * Create the application.
 	 */
-	public PatientData() {
-		initialize();
+	public PatientData(String[] args) {
+		initialize(args);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(String[] args) {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setTitle("Patient Data");
@@ -66,7 +66,7 @@ public class PatientData {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		patientName = new JTextField();
+		patientName = new JTextField(args[0]);
 		patientName.setEditable(false);
 		patientName.setFont(new Font("Cambria", Font.BOLD, 25));
 		patientName.setBounds(43, 4, 401, 35);
@@ -97,14 +97,14 @@ public class PatientData {
 		lblEvents.setBounds(10, 149, 55, 19);
 		frame.getContentPane().add(lblEvents);
 		
-		patientNum = new JTextField();
+		patientNum = new JTextField(args[1]);
 		patientNum.setEditable(false);
 		patientNum.setFont(new Font("Cambria", Font.PLAIN, 11));
 		patientNum.setBounds(104, 59, 340, 20);
 		frame.getContentPane().add(patientNum);
 		patientNum.setColumns(10);
 		
-		events = new JTextField();
+		events = new JTextField(args[4]);
 		events.setEditable(false);
 		events.setFont(new Font("Cambria", Font.PLAIN, 11));
 		events.setBounds(10, 179, 434, 71);
@@ -116,20 +116,20 @@ public class PatientData {
 		lblNotes.setBounds(10, 261, 55, 19);
 		frame.getContentPane().add(lblNotes);
 		
-		notes = new JTextField();
+		notes = new JTextField(args[5]);
 		notes.setEditable(false);
 		notes.setColumns(10);
 		notes.setBounds(10, 291, 434, 71);
 		frame.getContentPane().add(notes);
 		
-		roomNum = new JTextField();
+		roomNum = new JTextField(args[2]);
 		roomNum.setEditable(false);
 		roomNum.setFont(new Font("Cambria", Font.PLAIN, 11));
 		roomNum.setColumns(10);
 		roomNum.setBounds(79, 90, 365, 20);
 		frame.getContentPane().add(roomNum);
 		
-		PCP = new JTextField();
+		PCP = new JTextField(args[3]);
 		PCP.setEditable(false);
 		PCP.setFont(new Font("Cambria", Font.PLAIN, 11));
 		PCP.setColumns(10);
@@ -151,7 +151,7 @@ public class PatientData {
 		editButton = new JButton("Edit");
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditPatientData.main(null);
+				EditPatientData.main(args);
 				frame.dispose();
 			}
 		});

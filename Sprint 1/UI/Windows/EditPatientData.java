@@ -35,7 +35,7 @@ public class EditPatientData {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditPatientData window = new EditPatientData();
+					EditPatientData window = new EditPatientData(args);
 					window.frame.setVisible(true);
 					window.frame.setLocationRelativeTo(null);
 					window.frame.setMinimumSize(new Dimension(450, 450));
@@ -51,14 +51,14 @@ public class EditPatientData {
 	/**
 	 * Create the application.
 	 */
-	public EditPatientData() {
-		initialize();
+	public EditPatientData(String[] args) {
+		initialize(args);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(String[] args) {
 		frame = new JFrame();
 		frame.setTitle("Edit Patient Data");
 		frame.getContentPane().setFont(new Font("Cambria", Font.PLAIN, 11));
@@ -66,7 +66,7 @@ public class EditPatientData {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		patientName = new JTextField();
+		patientName = new JTextField(args[0]);
 		patientName.setEditable(false);
 		patientName.setFont(new Font("Cambria", Font.BOLD, 25));
 		patientName.setBounds(43, 4, 401, 35);
@@ -97,14 +97,14 @@ public class EditPatientData {
 		lblEvents.setBounds(10, 149, 55, 19);
 		frame.getContentPane().add(lblEvents);
 		
-		patientNum = new JTextField();
+		patientNum = new JTextField(args[1]);
 		patientNum.setEditable(false);
 		patientNum.setFont(new Font("Cambria", Font.PLAIN, 11));
 		patientNum.setBounds(104, 59, 340, 20);
 		frame.getContentPane().add(patientNum);
 		patientNum.setColumns(10);
 		
-		events = new JTextField();
+		events = new JTextField(args[4]);
 		events.setEditable(false);
 		events.setFont(new Font("Cambria", Font.PLAIN, 11));
 		events.setBounds(10, 179, 434, 71);
@@ -116,20 +116,20 @@ public class EditPatientData {
 		lblNotes.setBounds(10, 261, 55, 19);
 		frame.getContentPane().add(lblNotes);
 		
-		notes = new JTextField();
+		notes = new JTextField(args[5]);
 		notes.setEditable(false);
 		notes.setColumns(10);
 		notes.setBounds(10, 291, 434, 71);
 		frame.getContentPane().add(notes);
 		
-		roomNum = new JTextField();
+		roomNum = new JTextField(args[2]);
 		roomNum.setEditable(false);
 		roomNum.setFont(new Font("Cambria", Font.PLAIN, 11));
 		roomNum.setColumns(10);
 		roomNum.setBounds(79, 90, 365, 20);
 		frame.getContentPane().add(roomNum);
 		
-		PCP = new JTextField();
+		PCP = new JTextField(args[3]);
 		PCP.setEditable(false);
 		PCP.setFont(new Font("Cambria", Font.PLAIN, 11));
 		PCP.setColumns(10);
@@ -140,7 +140,9 @@ public class EditPatientData {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				exitOrNo.main(null);
+				String savedArgs[] = updateArgs(args);
+				String bothArgs[] = {args[0], args[1], args[2], args[3], args[4], args[5], savedArgs[0], savedArgs[1], savedArgs[2], savedArgs[3], savedArgs[4], savedArgs[5]};
+				exitOrNo.main(bothArgs);
 			}
 		});
 		backButton.setBounds(6, 6, 30, 30);
@@ -150,12 +152,24 @@ public class EditPatientData {
 		saveAndLeave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				PatientData.main(null);
+				String[] newArgs = updateArgs(args);
+				PatientData.main(newArgs);
 			}
 		});
+
 		saveAndLeave.setBackground(new Color(255, 255, 255));
 		saveAndLeave.setBounds(321, 374, 123, 29);
 		frame.getContentPane().add(saveAndLeave);
+	}
+
+	public String[] updateArgs(String[] args){
+		args[0] = patientName.getText();
+		args[1] = patientNum.getText();
+		args[2] = roomNum.getText();
+		args[3] = PCP.getText();
+		args[4] = events.getText();
+		args[5] = notes.getText();
+		return args;
 	}
 
 }
