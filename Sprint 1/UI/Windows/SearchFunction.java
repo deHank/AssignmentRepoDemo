@@ -127,7 +127,8 @@ public class SearchFunction {
 				String searchParam = searchBar.getText();
 				//TODO
 				//String names[] = function(searchType, searchParam);
-				//populateScrollPane(names);
+				String tempNames[] = {"Doe John", "Doe John"};
+				populateScrollPane(tempNames);
             }
         });
 	}
@@ -138,7 +139,8 @@ public class SearchFunction {
             public void actionPerformed(ActionEvent e) {
 				//TODO
 				//String patientData[] = function(button.getText());
-				//PatientData.main(patientData);
+				String tempPatientData[] = {"Doe John", "1110001111", "121", "Jacob Alexander", "", ""};
+				PatientData.main(tempPatientData);
 				frame.dispose();
             }
         });
