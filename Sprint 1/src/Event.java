@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 //Class for creating event objects
-public class Event {
+public class    Event {
     private String eventName;
     private String eventType;
     private String eventDescription;

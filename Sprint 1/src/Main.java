@@ -141,6 +141,10 @@ public class Main {
         }else {
             System.out.printf("Patient not found! \n");
         }
+
+        /////////////
+
+
     }
 
     public static void roomSearch(String roomNum) throws SQLException {
@@ -151,6 +155,72 @@ public class Main {
         }else {
             System.out.printf("Patient not found! \n");
         }
+    }
+
+    public static void mrnSearch(String MRN) throws SQLException {
+        PatientType patient = PatientDBService.searchPatientByMRN(MRN);
+        if (patient != null){
+            System.out.printf("Patient found at %s\n", MRN);
+            patient.printPatient();
+        }else {
+            System.out.printf("Patient not found! \n");
+        }
+    }
+
+    public static void pcpSearch(String PCP) throws SQLException {
+        PatientType patient = PatientDBService.searchPatientByPCP(PCP);
+        if (patient != null){
+            System.out.printf("Patient found at %s\n", PCP);
+            patient.printPatient();
+        }else {
+            System.out.printf("Patient not found! \n");
+        }
+    }
+
+    public static void admissionSearch(String search) throws SQLException {
+        PatientType patient = PatientDBService.searchPatientByaddmissionDate(search);
+        if (patient != null){
+            System.out.printf("Patient found at %s\n", search);
+            patient.printPatient();
+        }else {
+            System.out.printf("Patient not found! \n");
+        }
+    }
+
+    public static String[] ptnSelected(PatientType ptn) throws SQLException {
+        String ptnInfo[] = new String[5];
+        ptnInfo[0] = ptn.getPatientLName() + ptn.getPatientFName();
+        ptnInfo[1] = ptn.getMRN();
+        ptnInfo[2] = ptn.getRoomNumber();
+        ptnInfo[3] = ptn.getPcpString();
+        ptnInfo[4] = ptn.getEvent();
+        ptnInfo[5] = ptn.getChart();
+        return ptnInfo;
+    }
+
+
+    public static void searchSelect(String searchType, String searchParam) throws SQLException {
+        switch (searchType) {
+            case "LastNameFirstName":
+                String parts[] = searchParam.split(" ", 2);
+                String lastName = parts[0];
+                String firstName = parts[1];
+                basicPatientSearch(firstName, lastName);
+                break;
+            case "Room Number":
+                roomSearch(searchParam);
+                break;
+            case "Medical Record Number":
+                mrnSearch(searchParam);
+                break;
+            case "Primary Care Provider ":
+                pcpSearch(searchParam);
+                break;
+            case "Admission Date": //Year - month - day
+                admissionSearch(searchParam);
+                break;
+        }
+
     }
 
     //main function
