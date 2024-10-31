@@ -42,12 +42,24 @@ public class Main {
 
                 //If selection is 3, print entire list of patients
             }else if (choice.equalsIgnoreCase("3")) {
-                //AddElements addElements = new AddElements();
-                //addElements.execute();
-                //Create a function that will print the top 10 patients, and give them the option to print the list of the next 10 patients
+                List<PatientType> patients = PatientDBService.getAllPatients();
+                int start = 0;
+                int end = Math.min(10, patients.size());
+                scanner = new Scanner(System.in);
 
-
-                //Gag function for calling doctor, may be replaced by something else later
+                while (start < patients.size()) {
+                    for (int i = start; i < end; i++) {
+                        PatientType patient = patients.get(i);
+                        System.out.println(patient.getPatientFName() + " " + patient.getPatientLName());
+                    }
+                    if (end == patients.size()) {
+                        break;
+                    }
+                    System.out.println("Press Enter to see the next 10 patients...");
+                    scanner.nextLine();
+                    start = end;
+                    end = Math.min(end + 10, patients.size());
+                }
             }else if (choice.equalsIgnoreCase("4")) {
                 System.out.printf("Calling doctor on call");
                 callingDr();

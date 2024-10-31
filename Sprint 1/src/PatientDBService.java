@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +11,14 @@ import java.util.List;
 //pls ignore how bulky this is, it will be streamlined later
 public class PatientDBService {
 
-    public static List<PatientType> searchPatientName(String fName, String lname) throws SQLException {
+    public static List<PatientType> searchPatientName(String first_name, String last_name) throws SQLException {
         List<PatientType> patients = new ArrayList<>();
-        String query = "select * from patient WHERE fname=? AND lname=?";
+        String query = "select * from patients WHERE first_name=? AND last_name=?";
 
         try (Connection connect = DatabaseConnection.getConnection();
         PreparedStatement stmt = connect.prepareStatement(query)) {
-            stmt.setString(1, fName);
-            stmt.setString(2, lname);
+            stmt.setString(1, first_name);
+            stmt.setString(2, last_name);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
@@ -26,26 +27,16 @@ public class PatientDBService {
                     patient.setfname(rs.getString("first_name"));
                     patient.setlname(rs.getString("last_name"));
 
-                    String[] parts = rs.getString("date_of_birth").split("-");
-                    int year = Integer.parseInt(parts[0]);
-                    patient.setBirthYear(year);
-                    int month = Integer.parseInt(parts[1]);
-                    patient.setBirthMonth(month);
-                    int day = Integer.parseInt(parts[2]);
-                    patient.setBirthDay(day);
+                    LocalDateTime dob = rs.getTimestamp("date_of_birth").toLocalDateTime();
+                    patient.setBirthYear(dob.getYear());
+                    patient.setBirthMonth(dob.getMonthValue());
+                    patient.setBirthDay(dob.getDayOfMonth());
 
                     patient.setGender(rs.getString("gender"));
 
-                    parts = rs.getString("admission_date").split("-");
-                    year = Integer.parseInt(parts[0]);
-                    patient.setAdminYear(year);
-                    month = Integer.parseInt(parts[1]);
-                    patient.setAdminMonth(month);
-                    day = Integer.parseInt(parts[2]);
-                    patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
-                    patient.setPcpString(rs.getString("pcp"));
+                    patient.setPcpString(rs.getString("attending_physician"));
                     patient.setDiagnosis(rs.getString("diagnosis"));
                     patients.add(patient);
                 }
@@ -91,7 +82,7 @@ public class PatientDBService {
                     patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
-                    patient.setPcpString(rs.getString("pcp"));
+                    patient.setPcpString(rs.getString("attending_physician"));
                     patient.setDiagnosis(rs.getString("diagnosis"));
                     patients.add(patient);
                 }
@@ -137,7 +128,7 @@ public class PatientDBService {
                     patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
-                    patient.setPcpString(rs.getString("pcp"));
+                    patient.setPcpString(rs.getString("attending_physician"));
                     patient.setDiagnosis(rs.getString("diagnosis"));
                     patients.add(patient);
                 }
@@ -149,13 +140,13 @@ public class PatientDBService {
      }
 
 
-    public static List<PatientType> searchPatientByPCP(String pcp) throws SQLException {
+    public static List<PatientType> searchPatientByPCP(String attending_physician) throws SQLException {
         List<PatientType> patients = new ArrayList<>();
-        String query = "SELECT * FROM Patients WHERE pcp = ?";
+        String query = "SELECT * FROM Patients WHERE attending_physician = ?";
 
         try (Connection connect = DatabaseConnection.getConnection();
              PreparedStatement stmt = connect.prepareStatement(query)) {
-            stmt.setString(1, pcp);
+            stmt.setString(1, attending_physician);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
@@ -183,7 +174,7 @@ public class PatientDBService {
                     patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
-                    patient.setPcpString(rs.getString("pcp"));
+                    patient.setPcpString(rs.getString("attending_physician"));
                     patient.setDiagnosis(rs.getString("diagnosis"));
                     patients.add(patient);
                 }
@@ -227,7 +218,7 @@ public class PatientDBService {
                     patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
-                    patient.setPcpString(rs.getString("pcp"));
+                    patient.setPcpString(rs.getString("attending_physician"));
                     patient.setDiagnosis(rs.getString("diagnosis"));
                     patients.add(patient);
                 }
@@ -238,4 +229,40 @@ public class PatientDBService {
         return patients;
     }
 
+    public static List<PatientType> getAllPatients() throws SQLException {
+        List<PatientType> patients = new ArrayList<>();
+        String query = "SELECT * FROM patients";
+
+        try (Connection connect = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connect.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                PatientType patient = new PatientType();
+                patient.setMRN(rs.getString("patient_id"));
+                patient.setfname(rs.getString("first_name"));
+                patient.setlname(rs.getString("last_name"));
+
+                LocalDateTime dob = rs.getTimestamp("date_of_birth").toLocalDateTime();
+                patient.setBirthYear(dob.getYear());
+                patient.setBirthMonth(dob.getMonthValue());
+                patient.setBirthDay(dob.getDayOfMonth());
+
+                patient.setGender(rs.getString("gender"));
+
+                LocalDateTime admissionDate = rs.getTimestamp("admission_date").toLocalDateTime();
+                patient.setAdminYear(admissionDate.getYear());
+                patient.setAdminMonth(admissionDate.getMonthValue());
+                patient.setAdminDay(admissionDate.getDayOfMonth());
+
+                patient.setRoomNumber(rs.getString("room_number"));
+                patient.setPcpString(rs.getString("attending_physician"));
+                patient.setDiagnosis(rs.getString("diagnosis"));
+                patients.add(patient);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return patients;
+    }
 }
