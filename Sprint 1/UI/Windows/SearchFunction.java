@@ -27,7 +27,7 @@ public class SearchFunction {
 	private JSeparator separator_1;
 	private JButton searchButton;
 	private JLabel lblAdvanced;
-	private JScrollPane scrollPane;
+	private JScrollPane dontDoAnything;
 	private JComboBox advList;
 
 	/**
@@ -80,10 +80,10 @@ public class SearchFunction {
 		separator_1.setBounds(10, 97, 414, 2);
 		frame.getContentPane().add(separator_1);
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(10, 110, 414, 192);
-		frame.getContentPane().add(scrollPane);
+		dontDoAnything = new JScrollPane();
+		dontDoAnything.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		dontDoAnything.setBounds(10, 110, 414, 192);
+		frame.getContentPane().add(dontDoAnything);
 		
 		searchButton = new JButton("GO");
 		searchButton.addActionListener(new ActionListener() {
@@ -154,7 +154,8 @@ public class SearchFunction {
 			JButton button = new JButton(name);
 			button.setBounds(50, 50, 50, 50);
 			addGetPatientDataFunction(button);
-			this.scrollPane.add(button);
+			this.dontDoAnything.add(button);
+			hello;
 		}
 		frame.getContentPane().revalidate();
 		frame.getContentPane().repaint();
