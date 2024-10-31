@@ -84,12 +84,11 @@ public class SearchFunction {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 414, 192);
 		frame.getContentPane().add(scrollPane);
-		frame.revalidate();
-		frame.repaint();
 		
 		searchButton = new JButton("GO");
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("oeirnoiern");
 			}
 		});
 		searchButton.setFont(new Font("Cambria", Font.BOLD, 15));
@@ -150,6 +149,7 @@ public class SearchFunction {
 
 	private void populateScrollPane(String names[]){
 		for(String name : names){
+			System.out.println("eiurbiuerb");
 			// String firstNameLastName[] = name.split(" ");
 			JButton button = new JButton(name);
 			button.setBounds(50, 50, 50, 50);
