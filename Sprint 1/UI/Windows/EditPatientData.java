@@ -65,10 +65,9 @@ public class EditPatientData {
 		frmEditPatientData.setLocationRelativeTo(null);
 		frmEditPatientData.setTitle("Edit Patient Data");
 		frmEditPatientData.getContentPane().setFont(new Font("Cambria", Font.PLAIN, 11));
-		frmEditPatientData.setBounds(100, 100, 450, 450);
+		frmEditPatientData.setSize(450, 450);
 		frmEditPatientData.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmEditPatientData.getContentPane().setLayout(null);
-		frmEditPatientData.setLocationRelativeTo(null);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 46, 414, 2);
@@ -124,30 +123,30 @@ public class EditPatientData {
 		editButton.setMaximumSize(new Dimension (123, 29));
 		frmEditPatientData.getContentPane().add(editButton);
 		
-		eventsBox = new JTextArea();
+		eventsBox = new JTextArea(args[4]);
 		eventsBox.setBounds(10, 180, 434, 63);
 		frmEditPatientData.getContentPane().add(eventsBox);
 		
-		notesBox = new JTextArea();
+		notesBox = new JTextArea(args[5]);
 		notesBox.setBounds(10, 292, 434, 63);
 		frmEditPatientData.getContentPane().add(notesBox);
 		
-		idenNum = new JTextField();
+		idenNum = new JTextField(args[1]);
 		idenNum.setBounds(104, 51, 340, 31);
 		frmEditPatientData.getContentPane().add(idenNum);
 		idenNum.setColumns(10);
 		
-		roomNum = new JTextField();
+		roomNum = new JTextField(args[2]);
 		roomNum.setColumns(10);
 		roomNum.setBounds(79, 84, 365, 31);
 		frmEditPatientData.getContentPane().add(roomNum);
 		
-		PCPBox = new JTextField();
+		PCPBox = new JTextField(args[3]);
 		PCPBox.setColumns(10);
 		PCPBox.setBounds(191, 116, 253, 31);
 		frmEditPatientData.getContentPane().add(PCPBox);
 		
-		patientName = new JTextField();
+		patientName = new JTextField(args[0]);
 		patientName.setBounds(42, 0, 402, 41);
 		frmEditPatientData.getContentPane().add(patientName);
 		patientName.setColumns(10);

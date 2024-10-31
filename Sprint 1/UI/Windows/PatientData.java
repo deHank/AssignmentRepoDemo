@@ -65,10 +65,9 @@ public class PatientData {
 		frame.setTitle("Patient Data");
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setFont(new Font("Cambria", Font.PLAIN, 11));
-		frame.setBounds(100, 100, 450, 450);
+		frame.setSize(450, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.setLocationRelativeTo(null);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 46, 414, 2);
@@ -124,35 +123,35 @@ public class PatientData {
 		editButton.setMaximumSize(new Dimension (123, 29));
 		frame.getContentPane().add(editButton);
 		
-		idenNum = new JTextField();
+		idenNum = new JTextField(args[1]);
 		idenNum.setEditable(false);
 		idenNum.setColumns(10);
 		idenNum.setBounds(104, 54, 340, 31);
 		frame.getContentPane().add(idenNum);
 		
-		roomNum = new JTextField();
+		roomNum = new JTextField(args[2]);
 		roomNum.setEditable(false);
 		roomNum.setColumns(10);
 		roomNum.setBounds(79, 84, 365, 31);
 		frame.getContentPane().add(roomNum);
 		
-		PCPBox = new JTextField();
+		PCPBox = new JTextField(args[3]);
 		PCPBox.setEditable(false);
 		PCPBox.setColumns(10);
 		PCPBox.setBounds(191, 116, 253, 31);
 		frame.getContentPane().add(PCPBox);
 		
-		eventsBox = new JTextArea();
+		eventsBox = new JTextArea(args[4]);
 		eventsBox.setEditable(false);
 		eventsBox.setBounds(10, 180, 434, 63);
 		frame.getContentPane().add(eventsBox);
 		
-		notesBox = new JTextArea();
+		notesBox = new JTextArea(args[5]);
 		notesBox.setEditable(false);
 		notesBox.setBounds(10, 292, 434, 63);
 		frame.getContentPane().add(notesBox);
 		
-		patientName = new JTextField();
+		patientName = new JTextField(args[0]);
 		patientName.setEditable(false);
 		patientName.setColumns(10);
 		patientName.setBounds(42, 0, 402, 41);
