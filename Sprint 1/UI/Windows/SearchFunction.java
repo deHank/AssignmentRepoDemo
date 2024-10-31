@@ -130,7 +130,7 @@ public class SearchFunction {
 				String searchParam = searchBar.getText();
 				//TODO
 				//String names[] = function(searchType, searchParam);
-				String tempNames[] = {"Doe John", "Doe John"};
+				String tempNames[] = {"Doe John", "Doe John", "Doe John", "Doe John", "Doe John"};
 				populateScrollPane(tempNames);
             }
         });
