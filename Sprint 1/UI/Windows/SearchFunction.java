@@ -17,8 +17,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
+import java.awt.GridLayout;
 
 public class SearchFunction {
 
@@ -157,14 +159,20 @@ public class SearchFunction {
 	}
 
 	private void populateScrollPane(String names[]){
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(names.length, 1, 5, 5));
+
 		for(String name : names){
 			System.out.println("eiurbiuerb");
 			// String firstNameLastName[] = name.split(" ");
 			JButton button = new JButton(name);
 			button.setBounds(50, 50, 50, 50);
 			addGetPatientDataFunction(button);
-			this.dontDoAnything.add(button);
+			panel.add(button);
 		}
+
+		dontDoAnything.setViewportView(panel);
+
 		frame.getContentPane().revalidate();
 		frame.getContentPane().repaint();
 		frame.revalidate();
