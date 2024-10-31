@@ -19,12 +19,12 @@ public class PatientData {
 
 	private JFrame frame;
 	private JButton editButton;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextArea textArea;
-	private JTextArea textArea_1;
-	private JTextField textField_3;
+	private JTextField idenNum;
+	private JTextField roomNum;
+	private JTextField PCPBox;
+	private JTextArea eventsBox;
+	private JTextArea notesBox;
+	private JTextField patientName;
 	
 
 	/**
@@ -124,38 +124,38 @@ public class PatientData {
 		editButton.setMaximumSize(new Dimension (123, 29));
 		frame.getContentPane().add(editButton);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBounds(104, 54, 340, 31);
-		frame.getContentPane().add(textField);
+		idenNum = new JTextField();
+		idenNum.setEditable(false);
+		idenNum.setColumns(10);
+		idenNum.setBounds(104, 54, 340, 31);
+		frame.getContentPane().add(idenNum);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(79, 84, 365, 31);
-		frame.getContentPane().add(textField_1);
+		roomNum = new JTextField();
+		roomNum.setEditable(false);
+		roomNum.setColumns(10);
+		roomNum.setBounds(79, 84, 365, 31);
+		frame.getContentPane().add(roomNum);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBounds(191, 116, 253, 31);
-		frame.getContentPane().add(textField_2);
+		PCPBox = new JTextField();
+		PCPBox.setEditable(false);
+		PCPBox.setColumns(10);
+		PCPBox.setBounds(191, 116, 253, 31);
+		frame.getContentPane().add(PCPBox);
 		
-		textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setBounds(10, 180, 434, 63);
-		frame.getContentPane().add(textArea);
+		eventsBox = new JTextArea();
+		eventsBox.setEditable(false);
+		eventsBox.setBounds(10, 180, 434, 63);
+		frame.getContentPane().add(eventsBox);
 		
-		textArea_1 = new JTextArea();
-		textArea_1.setEditable(false);
-		textArea_1.setBounds(10, 292, 434, 63);
-		frame.getContentPane().add(textArea_1);
+		notesBox = new JTextArea();
+		notesBox.setEditable(false);
+		notesBox.setBounds(10, 292, 434, 63);
+		frame.getContentPane().add(notesBox);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setColumns(10);
-		textField_3.setBounds(42, 0, 402, 41);
-		frame.getContentPane().add(textField_3);
+		patientName = new JTextField();
+		patientName.setEditable(false);
+		patientName.setColumns(10);
+		patientName.setBounds(42, 0, 402, 41);
+		frame.getContentPane().add(patientName);
 	}
 }

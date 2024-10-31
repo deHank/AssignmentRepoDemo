@@ -103,7 +103,7 @@ public class SearchFunction {
 		frame.getContentPane().add(lblAdvanced);
 		
 		String advancedSearchOptions[] = {"Last Name First Name", "Room Number", "Medical Record Number", "Primary Care Provider", "Admission Date"};
-		advList = new JComboBox(advancedSearchOptions);
+		advList = new JComboBox<String>(advancedSearchOptions);
 		advList.setFont(new Font("Cambria", Font.BOLD, 15));
 		advList.setBounds(129, 45, 233, 34);
 		frame.getContentPane().add(advList);

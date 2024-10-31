@@ -19,12 +19,12 @@ public class EditPatientData {
 
 	private JFrame frmEditPatientData;
 	private JButton editButton;
-	private JTextArea textArea;
-	private JTextArea textArea_1;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextArea eventsBox;
+	private JTextArea notesBox;
+	private JTextField idenNum;
+	private JTextField roomNum;
+	private JTextField PCPBox;
+	private JTextField patientName;
 	
 
 	/**
@@ -124,32 +124,32 @@ public class EditPatientData {
 		editButton.setMaximumSize(new Dimension (123, 29));
 		frmEditPatientData.getContentPane().add(editButton);
 		
-		textArea = new JTextArea();
-		textArea.setBounds(10, 180, 434, 63);
-		frmEditPatientData.getContentPane().add(textArea);
+		eventsBox = new JTextArea();
+		eventsBox.setBounds(10, 180, 434, 63);
+		frmEditPatientData.getContentPane().add(eventsBox);
 		
-		textArea_1 = new JTextArea();
-		textArea_1.setBounds(10, 292, 434, 63);
-		frmEditPatientData.getContentPane().add(textArea_1);
+		notesBox = new JTextArea();
+		notesBox.setBounds(10, 292, 434, 63);
+		frmEditPatientData.getContentPane().add(notesBox);
 		
-		textField = new JTextField();
-		textField.setBounds(104, 51, 340, 31);
-		frmEditPatientData.getContentPane().add(textField);
-		textField.setColumns(10);
+		idenNum = new JTextField();
+		idenNum.setBounds(104, 51, 340, 31);
+		frmEditPatientData.getContentPane().add(idenNum);
+		idenNum.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(79, 84, 365, 31);
-		frmEditPatientData.getContentPane().add(textField_1);
+		roomNum = new JTextField();
+		roomNum.setColumns(10);
+		roomNum.setBounds(79, 84, 365, 31);
+		frmEditPatientData.getContentPane().add(roomNum);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(191, 116, 253, 31);
-		frmEditPatientData.getContentPane().add(textField_2);
+		PCPBox = new JTextField();
+		PCPBox.setColumns(10);
+		PCPBox.setBounds(191, 116, 253, 31);
+		frmEditPatientData.getContentPane().add(PCPBox);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(42, 0, 402, 41);
-		frmEditPatientData.getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		patientName = new JTextField();
+		patientName.setBounds(42, 0, 402, 41);
+		frmEditPatientData.getContentPane().add(patientName);
+		patientName.setColumns(10);
 	}
 }
