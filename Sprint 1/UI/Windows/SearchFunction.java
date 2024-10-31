@@ -22,6 +22,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
 
+import UI.Parts.Button;
+
 public class SearchFunction {
 
 	private JFrame frame;
@@ -88,11 +90,6 @@ public class SearchFunction {
 		frame.getContentPane().add(dontDoAnything);
 		
 		searchButton = new JButton("GO");
-		searchButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("oeirnoiern");
-			}
-		});
 		searchButton.setFont(new Font("Cambria", Font.BOLD, 15));
 		searchButton.setBounds(367, 22, 57, 43);
 		frame.getContentPane().add(searchButton);
@@ -129,8 +126,8 @@ public class SearchFunction {
 				String searchType = (String) advList.getSelectedItem();
 				String searchParam = searchBar.getText();
 				//TODO
-				//String names[] = function(searchType, searchParam);
-				String tempNames[] = {"Doe John", "Doe John", "Doe John", "Doe John", "Doe John"};
+				//String names[] = searchSelect(searchType, searchParam);
+				String tempNames[] = {"Doe John 1", "Doe John 1", "Doe John 1", "Doe John 1", "Doe John 1"};
 				populateScrollPane(tempNames);
             }
         });
@@ -141,7 +138,7 @@ public class SearchFunction {
             @Override
             public void actionPerformed(ActionEvent e) {
 				//TODO
-				//String patientData[] = function(button.getText());
+				//String patientData[] = ptnSelected(button.getText(), button.getID());
 				String tempPatientData[] = {"Doe John", "1110001111", "121", "Jacob Alexander", "", ""};
 				PatientData.main(tempPatientData);
 				frame.dispose();
@@ -154,9 +151,8 @@ public class SearchFunction {
 		panel.setLayout(new GridLayout(names.length, 1, 5, 5));
 
 		for(String name : names){
-			System.out.println("eiurbiuerb");
-			// String firstNameLastName[] = name.split(" ");
-			JButton button = new JButton(name);
+			String data[] = name.split(" ");
+			Button button = new Button(data[0]+" "+data[1], data[2]);
 			button.setBounds(50, 50, 50, 50);
 			addGetPatientDataFunction(button);
 			panel.add(button);

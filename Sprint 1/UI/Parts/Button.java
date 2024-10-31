@@ -5,29 +5,14 @@ import java.awt.event.ActionListener;
 import java.awt.Dimension;
 
 public class Button extends JButton{
-    int width;
-    int height;
-    int x;
-    int y;
-    String text;
+    String ID;
 
-    public Button(String text, int x, int y, int width, int height){
+    public Button(String text, String ID){
         super(text);
-        super.setBounds(x, y, width, height);
-        
-        this.setDimensions(width, height);
-        this.text = text;
-        this.x = x;
-        this.y = y;
+        this.ID = ID;
     }
 
-    public void setDimensions(int width, int height){
-        super.setMinimumSize(new Dimension(width, height));
-        super.setPreferredSize(new Dimension(width, height));
-        super.setMaximumSize(new Dimension(width, height));
-    }
-
-    public void setOnClick(ActionListener action){
-        super.addActionListener(action);
+    protected String getID(){
+        return this.ID;
     }
 }
