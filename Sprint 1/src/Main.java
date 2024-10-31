@@ -1,18 +1,13 @@
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+import java.util.Scanner;
 
-//main class
 public class Main {
 
-    //For GUI TEAM: ignore, this was for testing in the run tool
-    //method to create main menu that other menus stem from
     public static void showmenu1() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         String choice;
         do {
-            //Menu options between 1 and 4, and 9 to exit program
-            //currently takes numerical keyboard input to select
             System.out.printf("-------------Main Menu---------------\n");
             System.out.printf("What search would you like? \n");
             System.out.printf("1. Basic search...\n");
@@ -21,30 +16,29 @@ public class Main {
             System.out.printf("4. Call a doctor...\n");
             System.out.printf("9. Exit\n");
 
-            //Takes next input for menu selection
             choice = scanner.nextLine();
 
-            //sub menu for advanced search
-            //VVV Need to change this if/else-if structure to a switch structure VVV
             if (choice.equalsIgnoreCase("1")) {
                 System.out.printf("--------Basic Search-------------\n");
                 System.out.printf("Enter patient first name...\n");
                 String firstName = scanner.nextLine();
                 System.out.printf("Enter patient last name...\n");
                 String lastName = scanner.nextLine();
-                //enter method for search algo
-                basicPatientSearch(firstName, lastName);
-
-                //If selected opens sub menu for advanced search
+                String[] patientNames = basicPatientSearch(firstName, lastName);
+                if (patientNames.length == 0) {
+                    System.out.printf("No patients found with that name.\n");
+                } else {
+                    System.out.printf("Patients found:\n");
+                    for (String name : patientNames) {
+                        System.out.println(name);
+                    }
+                }
             } else if (choice.equalsIgnoreCase("2")) {
                 showmenu2();
-                //choice = "3";
-
-                //If selection is 3, print entire list of patients
-            }else if (choice.equalsIgnoreCase("3")) {
+            } else if (choice.equalsIgnoreCase("3")) {
                 List<PatientType> patients = PatientDBService.getAllPatients();
                 int start = 0;
-                int end = Math.min(10, patients.size());
+                int end = Math.min(100, patients.size());
                 scanner = new Scanner(System.in);
 
                 while (start < patients.size()) {
@@ -55,28 +49,22 @@ public class Main {
                     if (end == patients.size()) {
                         break;
                     }
-                    System.out.println("Press Enter to see the next 10 patients...");
+                    System.out.println("Press Enter to see the next 100 patients...");
                     scanner.nextLine();
                     start = end;
-                    end = Math.min(end + 10, patients.size());
+                    end = Math.min(end + 100, patients.size());
                 }
-            }else if (choice.equalsIgnoreCase("4")) {
+            } else if (choice.equalsIgnoreCase("4")) {
                 System.out.printf("Calling doctor on call");
                 callingDr();
             }
-        }while (!(choice.equals( "9")));
-
+        } while (!(choice.equals("9")));
     }
 
-    //GUI TEAM: ignore this too
-    //method for advanced menu, called if choice 2 is selected
     public static void showmenu2() throws SQLException {
-        //scanner for taking next keyboard numerical input for choice
-        //be sure to add error exception in case of incorrect input
         Scanner scanner = new Scanner(System.in);
         String choice;
 
-        //User may enter 1 - 4 for choice and 9 to go back to previous menu
         do {
             System.out.printf("--------Advanced Search-------------\n");
             System.out.printf("Search by... \n");
@@ -86,75 +74,71 @@ public class Main {
             System.out.printf("4. Primary Care Provider \n");
             System.out.printf("9. Exit \n");
             choice = scanner.nextLine();
+            String[] patientNames = new String[0];
 
-            //Choice for conducting seach by room number
             if (choice.equalsIgnoreCase("1")) {
                 System.out.printf("Enter the room\n");
                 String room = scanner.nextLine();
-
-                //call to SQL database via room number goes here, takes one parameter VVV
-                roomSearch(room);
-
-            //Choice for conducting search by MRN (Medical Record Number)
+                patientNames = roomSearch(room);
             } else if (choice.equalsIgnoreCase("2")) {
                 System.out.printf("Enter the MRN\n");
                 String MRN = scanner.nextLine();
-
-                //call to SQL database via MRN goes here, takes one parameter
-                //mrnSearch(MRN);
-
-            //Choice for conducting search by patient Admission date
+                patientNames = mrnSearch(MRN);
             } else if (choice.equalsIgnoreCase("3")) {
                 System.out.printf("Enter the Admission Date in day, month, year \n");
                 int addDay = scanner.nextInt();
                 int addMonth = scanner.nextInt();
                 int addYear = scanner.nextInt();
-
-                //call to SQL database via admission date goes here, will take 3 inputs
-                //admissionDateSearch(int addDay, int addMonth, int addYear);
-
-            //Choice for conducting search by patient's PCP (Primary Care Providor)
+                scanner.nextLine(); // Consume the newline character
+                patientNames = admissionDateSearch(addDay, addMonth, addYear);
             } else if (choice.equalsIgnoreCase("4")) {
                 System.out.printf("Enter the PCP\n");
                 String PCP = scanner.nextLine();
-
-                //call to SQL database via PCP object that can be indexed by first and/or last name
-                //pcpSearch(PCP);
+                patientNames = pcpSearch(PCP);
             }
-        }while(!(choice.equals("9")));
+
+            if (patientNames.length == 0) {
+                System.out.printf("No patients found.\n");
+            } else {
+                System.out.printf("Patients found:\n");
+                for (String name : patientNames) {
+                    System.out.println(name);
+                }
+            }
+        } while (!(choice.equals("9")));
     }
 
-    //GUI TEAM: ignore this also
-    //gag function pretending to call Dr
-    public static void callingDr()
-    {
-        for (int i = 0; i < 3; i++)
-        {
+    public static void callingDr() {
+        for (int i = 0; i < 3; i++) {
             try {
                 Thread.sleep(900);
-            } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted: " + e.getMessage());
+            }
             System.out.printf(".");
             if (i == 2)
                 System.out.printf("\n");
         }
         try {
             Thread.sleep(1000);
-        } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted: " + e.getMessage());
+        }
         System.out.println("But no one answered...");
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted: " + e.getMessage());
+        }
         System.out.println("Good luck lol");
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted: " + e.getMessage());
+        }
     }
 
-    //GUI TEAM: These are the search functions, They take the specific patient search param, finds all matches
-    // and then returns a String array of the first and last names of all matches VVVVVVVV
-
     public static String[] basicPatientSearch(String fname, String lname) throws SQLException {
-
         List<PatientType> patients = PatientDBService.searchPatientName(fname, lname);
         String[] patientNames = new String[patients.size()];
 
@@ -183,7 +167,6 @@ public class Main {
     }
 
     public static String[] mrnSearch(String MRN) throws SQLException {
-        //PatientType patients = PatientDBService.searchPatientByMRN(MRN);
         List<PatientType> patients = PatientDBService.searchPatientsByMRN(MRN);
         String[] patientNames = new String[patients.size()];
 
@@ -200,8 +183,7 @@ public class Main {
     public static String[] pcpSearch(String PCP) throws SQLException {
         List<PatientType> patients = PatientDBService.searchPatientByPCP(PCP);
         String[] patientNames = new String[patients.size()];
-        if (!patients.isEmpty()){
-            //System.out.printf("Patients found at %s\n", search);
+        if (!patients.isEmpty()) {
             for (int i = 0; i < patients.size(); i++) {
                 PatientType patient = patients.get(i);
                 String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
@@ -212,10 +194,9 @@ public class Main {
     }
 
     public static String[] admissionSearch(String search) throws SQLException {
-        List<PatientType> patients = PatientDBService.searchPatientByaddmissionDate(search);
+        List<PatientType> patients = PatientDBService.searchPatientAdmissionDate(search);
         String[] patientNames = new String[patients.size()];
-        if (!patients.isEmpty()){
-            //System.out.printf("Patients found at %s\n", search);
+        if (!patients.isEmpty()) {
             for (int i = 0; i < patients.size(); i++) {
                 PatientType patient = patients.get(i);
                 String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
@@ -224,14 +205,14 @@ public class Main {
         }
         return patientNames;
     }
-    //End of Search functions ^^^^^^^^^
 
-    //FOR GUI TEAM: IMPORTANT VVVVVVVVVVVVVVVVVV
-    //This is the function that returns one specific patients information
-    //Call this when the user has selected the specific patient from the search results returned in the searchSelect() mehtod
-    //listed below this one.
+    public static String[] admissionDateSearch(int day, int month, int year) throws SQLException {
+        String search = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
+        return admissionSearch(search);
+    }
+
     public static String[] ptnSelected(PatientType ptn) throws SQLException {
-        String ptnInfo[] = new String[5];
+        String ptnInfo[] = new String[6];
         ptnInfo[0] = ptn.getPatientLName() + " " + ptn.getPatientFName();
         ptnInfo[1] = ptn.getMRN();
         ptnInfo[2] = ptn.getRoomNumber();
@@ -241,9 +222,7 @@ public class Main {
         return ptnInfo;
     }
 
-    //FOR GUI TEAM: IMPORTANT VVVVVVVVVVVVVVVVVV
-    //This is the method that allows the user to select which search type they want to use
-    public static String[]  searchSelect(String searchType, String searchParam) throws SQLException {
+    public static String[] searchSelect(String searchType, String searchParam) throws SQLException {
         switch (searchType) {
             case "LastNameFirstName":
                 String parts[] = searchParam.split(" ", 2);
@@ -256,17 +235,14 @@ public class Main {
                 return mrnSearch(searchParam);
             case "Primary Care Provider ":
                 return pcpSearch(searchParam);
-            case "Admission Date": //Year - month - day
+            case "Admission Date":
                 return admissionSearch(searchParam);
             default:
                 return null;
         }
     }
 
-    //main function
     public static void main(String[] args) throws SQLException {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
         PatientType patient = new PatientType();
         showmenu1();
     }

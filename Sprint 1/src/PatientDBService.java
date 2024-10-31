@@ -63,23 +63,17 @@ public class PatientDBService {
                     patient.setfname(rs.getString("first_name"));
                     patient.setlname(rs.getString("last_name"));
 
-                    String[] parts = rs.getString("date_of_birth").split("-");
-                    int year = Integer.parseInt(parts[0]);
-                    patient.setBirthYear(year);
-                    int month = Integer.parseInt(parts[1]);
-                    patient.setBirthMonth(month);
-                    int day = Integer.parseInt(parts[2]);
-                    patient.setBirthDay(day);
+                    LocalDateTime dob = rs.getTimestamp("date_of_birth").toLocalDateTime();
+                    patient.setBirthYear(dob.getYear());
+                    patient.setBirthMonth(dob.getMonthValue());
+                    patient.setBirthDay(dob.getDayOfMonth());
 
                     patient.setGender(rs.getString("gender"));
 
-                    parts = rs.getString("admission_date").split("-");
-                    year = Integer.parseInt(parts[0]);
-                    patient.setAdminYear(year);
-                    month = Integer.parseInt(parts[1]);
-                    patient.setAdminMonth(month);
-                    day = Integer.parseInt(parts[2]);
-                    patient.setAdminDay(day);
+                    LocalDateTime admDate = rs.getTimestamp("admission_date").toLocalDateTime();
+                    patient.setAdminYear(dob.getYear());
+                    patient.setAdminMonth(dob.getMonthValue());
+                    patient.setAdminDay(dob.getDayOfMonth());
 
                     patient.setRoomNumber(rs.getString("room_number"));
                     patient.setPcpString(rs.getString("attending_physician"));
@@ -109,23 +103,18 @@ public class PatientDBService {
                     patient.setfname(rs.getString("first_name"));
                     patient.setlname(rs.getString("last_name"));
 
-                    String[] parts = rs.getString("date_of_birth").split("-");
-                    int year = Integer.parseInt(parts[0]);
-                    patient.setBirthYear(year);
-                    int month = Integer.parseInt(parts[1]);
-                    patient.setBirthMonth(month);
-                    int day = Integer.parseInt(parts[2]);
-                    patient.setBirthDay(day);
+                    LocalDateTime dob = rs.getTimestamp("date_of_birth").toLocalDateTime();
+                    patient.setBirthYear(dob.getYear());
+                    patient.setBirthMonth(dob.getMonthValue());
+                    patient.setBirthDay(dob.getDayOfMonth());
+
+                    LocalDateTime admDate = rs.getTimestamp("admission_date").toLocalDateTime();
+                    patient.setAdminYear(dob.getYear());
+                    patient.setAdminMonth(dob.getMonthValue());
+                    patient.setAdminDay(dob.getDayOfMonth());
 
                     patient.setGender(rs.getString("gender"));
 
-                    parts = rs.getString("admission_date").split("-");
-                    year = Integer.parseInt(parts[0]);
-                    patient.setAdminYear(year);
-                    month = Integer.parseInt(parts[1]);
-                    patient.setAdminMonth(month);
-                    day = Integer.parseInt(parts[2]);
-                    patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
                     patient.setPcpString(rs.getString("attending_physician"));
@@ -155,23 +144,17 @@ public class PatientDBService {
                     patient.setfname(rs.getString("first_name"));
                     patient.setlname(rs.getString("last_name"));
 
-                    String[] parts = rs.getString("date_of_birth").split("-");
-                    int year = Integer.parseInt(parts[0]);
-                    patient.setBirthYear(year);
-                    int month = Integer.parseInt(parts[1]);
-                    patient.setBirthMonth(month);
-                    int day = Integer.parseInt(parts[2]);
-                    patient.setBirthDay(day);
+                    LocalDateTime dob = rs.getTimestamp("date_of_birth").toLocalDateTime();
+                    patient.setBirthYear(dob.getYear());
+                    patient.setBirthMonth(dob.getMonthValue());
+                    patient.setBirthDay(dob.getDayOfMonth());
+
+                    LocalDateTime admDate = rs.getTimestamp("admission_date").toLocalDateTime();
+                    patient.setAdminYear(dob.getYear());
+                    patient.setAdminMonth(dob.getMonthValue());
+                    patient.setAdminDay(dob.getDayOfMonth());
 
                     patient.setGender(rs.getString("gender"));
-
-                    parts = rs.getString("admission_date").split("-");
-                    year = Integer.parseInt(parts[0]);
-                    patient.setAdminYear(year);
-                    month = Integer.parseInt(parts[1]);
-                    patient.setAdminMonth(month);
-                    day = Integer.parseInt(parts[2]);
-                    patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
                     patient.setPcpString(rs.getString("attending_physician"));
@@ -185,13 +168,13 @@ public class PatientDBService {
         return patients;
     }
 
-    public static List<PatientType> searchPatientByaddmissionDate(String addmissionDate) throws SQLException {
+    public static List<PatientType> searchPatientAdmissionDate(String admissionDate) throws SQLException {
         List<PatientType> patients = new ArrayList<>();
-        String query = "SELECT * FROM Patients WHERE addmission_date = ?";
+        String query = "SELECT * FROM Patients WHERE admission_date = ?";
         //pick up from here and modify all other search functions to incorporate lists to hold multiple returns
         try (Connection connect = DatabaseConnection.getConnection();
         PreparedStatement stmt = connect.prepareStatement(query)) {
-            stmt.setString(1, addmissionDate);
+            stmt.setString(1, admissionDate);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     PatientType patient = new PatientType();
@@ -199,23 +182,18 @@ public class PatientDBService {
                     patient.setfname(rs.getString("first_name"));
                     patient.setlname(rs.getString("last_name"));
 
-                    String[] parts = rs.getString("date_of_birth").split("-");
-                    int year = Integer.parseInt(parts[0]);
-                    patient.setBirthYear(year);
-                    int month = Integer.parseInt(parts[1]);
-                    patient.setBirthMonth(month);
-                    int day = Integer.parseInt(parts[2]);
-                    patient.setBirthDay(day);
+                    LocalDateTime dob = rs.getTimestamp("date_of_birth").toLocalDateTime();
+                    patient.setBirthYear(dob.getYear());
+                    patient.setBirthMonth(dob.getMonthValue());
+                    patient.setBirthDay(dob.getDayOfMonth());
+
+                    LocalDateTime admDate = rs.getTimestamp("admission_date").toLocalDateTime();
+                    patient.setAdminYear(dob.getYear());
+                    patient.setAdminMonth(dob.getMonthValue());
+                    patient.setAdminDay(dob.getDayOfMonth());
 
                     patient.setGender(rs.getString("gender"));
 
-                    parts = rs.getString("admission_date").split("-");
-                    year = Integer.parseInt(parts[0]);
-                    patient.setAdminYear(year);
-                    month = Integer.parseInt(parts[1]);
-                    patient.setAdminMonth(month);
-                    day = Integer.parseInt(parts[2]);
-                    patient.setAdminDay(day);
 
                     patient.setRoomNumber(rs.getString("room_number"));
                     patient.setPcpString(rs.getString("attending_physician"));
