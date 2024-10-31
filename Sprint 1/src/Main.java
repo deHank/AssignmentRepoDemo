@@ -1,3 +1,5 @@
+package src;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -145,7 +147,7 @@ public class Main {
         if (!patients.isEmpty()) {
             for (int i = 0; i < patients.size(); i++) {
                 PatientType patient = patients.get(i);
-                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName() + " " + patient.getMRN();
                 patientNames[i] = fullname;
             }
         }
@@ -159,7 +161,7 @@ public class Main {
         if (!patients.isEmpty()) {
             for (int i = 0; i < patients.size(); i++) {
                 PatientType patient = patients.get(i);
-                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName() + " " + patient.getMRN();
                 patientNames[i] = fullname;
             }
         }
@@ -173,7 +175,7 @@ public class Main {
         if (!patients.isEmpty()) {
             for (int i = 0; i < patients.size(); i++) {
                 PatientType patient = patients.get(i);
-                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName() + " " + patient.getMRN();
                 patientNames[i] = fullname;
             }
         }
@@ -186,7 +188,7 @@ public class Main {
         if (!patients.isEmpty()) {
             for (int i = 0; i < patients.size(); i++) {
                 PatientType patient = patients.get(i);
-                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName() + " " + patient.getMRN();
                 patientNames[i] = fullname;
             }
         }
@@ -199,7 +201,7 @@ public class Main {
         if (!patients.isEmpty()) {
             for (int i = 0; i < patients.size(); i++) {
                 PatientType patient = patients.get(i);
-                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName() + " " + patient.getMRN();
                 patientNames[i] = fullname;
             }
         }
@@ -211,20 +213,25 @@ public class Main {
         return admissionSearch(search);
     }
 
-    public static String[] ptnSelected(PatientType ptn) throws SQLException {
-        String ptnInfo[] = new String[6];
-        ptnInfo[0] = ptn.getPatientLName() + " " + ptn.getPatientFName();
-        ptnInfo[1] = ptn.getMRN();
-        ptnInfo[2] = ptn.getRoomNumber();
-        ptnInfo[3] = ptn.getPcpString();
-        ptnInfo[4] = ptn.getEvent();
-        ptnInfo[5] = ptn.getChart();
+    public static String[] ptnSelected(String ptn) throws SQLException {
+        String parts[] = ptn.split(" ",3);
+        String mrn = parts[3];
+        //PatientType patient = mrnSearch(mrn);
+        List<PatientType> patients = PatientDBService.searchPatientsByMRN(mrn);
+        PatientType newpatient = patients.get(0);
+        String ptnInfo[] = new String[5];
+        ptnInfo[0] = newpatient.getPatientLName() + " " + newpatient.getPatientFName();
+        ptnInfo[1] = newpatient.getMRN();
+        ptnInfo[2] = newpatient.getRoomNumber();
+        ptnInfo[3] = newpatient.getPcpString();
+        ptnInfo[4] = newpatient.getEvent();
+        ptnInfo[5] = newpatient.getChart();
         return ptnInfo;
     }
 
     public static String[] searchSelect(String searchType, String searchParam) throws SQLException {
         switch (searchType) {
-            case "LastNameFirstName":
+            case "Last Name First Name":
                 String parts[] = searchParam.split(" ", 2);
                 String lastName = parts[0];
                 String firstName = parts[1];

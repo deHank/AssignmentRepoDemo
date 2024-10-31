@@ -1,3 +1,5 @@
+package src;
+
 import java.time.LocalDateTime;
 //Class for creating event objects
 public class    Event {

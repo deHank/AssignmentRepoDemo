@@ -1,3 +1,5 @@
+package src;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -22,7 +24,7 @@ public class DataSeeder {
         String sql = "INSERT INTO Patients (first_name, last_name, date_of_birth, gender, admission_date, discharge_date, room_number, attending_physician, diagnosis) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             for (int i = 0; i < NUMBER_OF_PATIENTS; i++) {
                 // Generating random patient data
