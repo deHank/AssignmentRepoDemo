@@ -116,7 +116,7 @@ public class EditPatientData {
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String[] newArgs = updateArgs();
-				SearchFunction.main(newArgs);
+				PatientData.main(newArgs);
 				frmEditPatientData.dispose();
 			}
 		});
