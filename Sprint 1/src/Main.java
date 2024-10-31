@@ -1,8 +1,11 @@
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 
 //main class
 public class Main {
+
+    //For GUI TEAM: ignore, this was for testing in the run tool
     //method to create main menu that other menus stem from
     public static void showmenu1() throws SQLException {
         Scanner scanner = new Scanner(System.in);
@@ -53,6 +56,7 @@ public class Main {
 
     }
 
+    //GUI TEAM: ignore this too
     //method for advanced menu, called if choice 2 is selected
     public static void showmenu2() throws SQLException {
         //scanner for taking next keyboard numerical input for choice
@@ -108,6 +112,7 @@ public class Main {
         }while(!(choice.equals("9")));
     }
 
+    //GUI TEAM: ignore this also
     //gag function pretending to call Dr
     public static void callingDr()
     {
@@ -133,63 +138,89 @@ public class Main {
         } catch (InterruptedException e) {  System.err.println("Interrupted: " + e.getMessage());  }
     }
 
-    public static void basicPatientSearch(String fname, String lname) {
-        PatientType patient = PatientDBService.searchPatientName(fname,lname);
-        if (patient != null){
-            System.out.printf("Patient found at %s\n", fname);
-            patient.printPatient();
-        }else {
-            System.out.printf("Patient not found! \n");
+    //GUI TEAM: These are the search functions, They take the specific patient search param, finds all matches
+    // and then returns a String array of the first and last names of all matches VVVVVVVV
+
+    public static String[] basicPatientSearch(String fname, String lname) throws SQLException {
+
+        List<PatientType> patients = PatientDBService.searchPatientName(fname, lname);
+        String[] patientNames = new String[patients.size()];
+
+        if (!patients.isEmpty()) {
+            for (int i = 0; i < patients.size(); i++) {
+                PatientType patient = patients.get(i);
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                patientNames[i] = fullname;
+            }
         }
-
-        /////////////
-
-
+        return patientNames;
     }
 
-    public static void roomSearch(String roomNum) throws SQLException {
-        PatientType patient = PatientDBService.searchPatientByRoom(roomNum);
-        if (patient != null){
-            System.out.printf("Patient found at %s\n", roomNum);
-            patient.printPatient();
-        }else {
-            System.out.printf("Patient not found! \n");
+    public static String[] roomSearch(String roomNum) throws SQLException {
+        List<PatientType> patients = PatientDBService.searchPatientByRoom(roomNum);
+        String[] patientNames = new String[patients.size()];
+
+        if (!patients.isEmpty()) {
+            for (int i = 0; i < patients.size(); i++) {
+                PatientType patient = patients.get(i);
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                patientNames[i] = fullname;
+            }
         }
+        return patientNames;
     }
 
-    public static void mrnSearch(String MRN) throws SQLException {
-        PatientType patient = PatientDBService.searchPatientByMRN(MRN);
-        if (patient != null){
-            System.out.printf("Patient found at %s\n", MRN);
-            patient.printPatient();
-        }else {
-            System.out.printf("Patient not found! \n");
+    public static String[] mrnSearch(String MRN) throws SQLException {
+        //PatientType patients = PatientDBService.searchPatientByMRN(MRN);
+        List<PatientType> patients = PatientDBService.searchPatientsByMRN(MRN);
+        String[] patientNames = new String[patients.size()];
+
+        if (!patients.isEmpty()) {
+            for (int i = 0; i < patients.size(); i++) {
+                PatientType patient = patients.get(i);
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                patientNames[i] = fullname;
+            }
         }
+        return patientNames;
     }
 
-    public static void pcpSearch(String PCP) throws SQLException {
-        PatientType patient = PatientDBService.searchPatientByPCP(PCP);
-        if (patient != null){
-            System.out.printf("Patient found at %s\n", PCP);
-            patient.printPatient();
-        }else {
-            System.out.printf("Patient not found! \n");
+    public static String[] pcpSearch(String PCP) throws SQLException {
+        List<PatientType> patients = PatientDBService.searchPatientByPCP(PCP);
+        String[] patientNames = new String[patients.size()];
+        if (!patients.isEmpty()){
+            //System.out.printf("Patients found at %s\n", search);
+            for (int i = 0; i < patients.size(); i++) {
+                PatientType patient = patients.get(i);
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                patientNames[i] = fullname;
+            }
         }
+        return patientNames;
     }
 
-    public static void admissionSearch(String search) throws SQLException {
-        PatientType patient = PatientDBService.searchPatientByaddmissionDate(search);
-        if (patient != null){
-            System.out.printf("Patient found at %s\n", search);
-            patient.printPatient();
-        }else {
-            System.out.printf("Patient not found! \n");
+    public static String[] admissionSearch(String search) throws SQLException {
+        List<PatientType> patients = PatientDBService.searchPatientByaddmissionDate(search);
+        String[] patientNames = new String[patients.size()];
+        if (!patients.isEmpty()){
+            //System.out.printf("Patients found at %s\n", search);
+            for (int i = 0; i < patients.size(); i++) {
+                PatientType patient = patients.get(i);
+                String fullname = patient.getPatientFName() + " " + patient.getPatientLName();
+                patientNames[i] = fullname;
+            }
         }
+        return patientNames;
     }
+    //End of Search functions ^^^^^^^^^
 
+    //FOR GUI TEAM: IMPORTANT VVVVVVVVVVVVVVVVVV
+    //This is the function that returns one specific patients information
+    //Call this when the user has selected the specific patient from the search results returned in the searchSelect() mehtod
+    //listed below this one.
     public static String[] ptnSelected(PatientType ptn) throws SQLException {
         String ptnInfo[] = new String[5];
-        ptnInfo[0] = ptn.getPatientLName() + ptn.getPatientFName();
+        ptnInfo[0] = ptn.getPatientLName() + " " + ptn.getPatientFName();
         ptnInfo[1] = ptn.getMRN();
         ptnInfo[2] = ptn.getRoomNumber();
         ptnInfo[3] = ptn.getPcpString();
@@ -198,29 +229,26 @@ public class Main {
         return ptnInfo;
     }
 
-
-    public static void searchSelect(String searchType, String searchParam) throws SQLException {
+    //FOR GUI TEAM: IMPORTANT VVVVVVVVVVVVVVVVVV
+    //This is the method that allows the user to select which search type they want to use
+    public static String[]  searchSelect(String searchType, String searchParam) throws SQLException {
         switch (searchType) {
             case "LastNameFirstName":
                 String parts[] = searchParam.split(" ", 2);
                 String lastName = parts[0];
                 String firstName = parts[1];
-                basicPatientSearch(firstName, lastName);
-                break;
+                return basicPatientSearch(firstName, lastName);
             case "Room Number":
-                roomSearch(searchParam);
-                break;
+                return roomSearch(searchParam);
             case "Medical Record Number":
-                mrnSearch(searchParam);
-                break;
+                return mrnSearch(searchParam);
             case "Primary Care Provider ":
-                pcpSearch(searchParam);
-                break;
+                return pcpSearch(searchParam);
             case "Admission Date": //Year - month - day
-                admissionSearch(searchParam);
-                break;
+                return admissionSearch(searchParam);
+            default:
+                return null;
         }
-
     }
 
     //main function
