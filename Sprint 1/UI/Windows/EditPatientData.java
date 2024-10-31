@@ -102,7 +102,9 @@ public class EditPatientData {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmEditPatientData.dispose();
-				exitOrNo.main(null);
+				String[] args2 = updateArgs(args);
+                String[] newArgs = {args[0], args[1], args[2], args[3], args[4], args[5], args2[0], args2[1], args2[2], args2[3], args2[4], args2[5]};
+				exitOrNo.main(newArgs);
 			}
 		});
 		backButton.setBounds(6, 6, 30, 30);
@@ -113,7 +115,8 @@ public class EditPatientData {
 		editButton = new JButton("Save And Exit");
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SearchFunction.main(args);
+				String[] newArgs = updateArgs(args);
+				PatientData.main(newArgs);
 				frmEditPatientData.dispose();
 			}
 		});
@@ -151,4 +154,14 @@ public class EditPatientData {
 		frmEditPatientData.getContentPane().add(patientName);
 		patientName.setColumns(10);
 	}
+	private String[] updateArgs(String[] args){
+        args[0] = patientName.getText();
+        args[1] = idenNum.getText();
+        args[2] = roomNum.getText();
+        args[3] = PCPBox.getText();
+        args[4] = eventsBox.getText();
+        args[5] = notesBox.getText();
+
+        return args;
+    }
 }
