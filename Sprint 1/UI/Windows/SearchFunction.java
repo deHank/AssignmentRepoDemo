@@ -150,13 +150,13 @@ public class SearchFunction {
 
 	private void populateScrollPane(String names[]){
 		for(String name : names){
-			String firstNameLastName[] = name.split(" ");
+			// String firstNameLastName[] = name.split(" ");
 			JButton button = new JButton(name);
-			//button.setBounds(50, 50, 50, 50);
+			button.setBounds(50, 50, 50, 50);
 			addGetPatientDataFunction(button);
 			this.scrollPane.add(button);
 		}
-		frame.revalidate();
-		frame.repaint();
+		frame.getContentPane().revalidate();
+		frame.getContentPane().repaint();
 	}
 }
