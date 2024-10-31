@@ -13,17 +13,18 @@ import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JTextArea;
 
 public class PatientData {
 
 	private JFrame frame;
-	private JTextField patientName;
-	private JTextField patientNum;
-	private JTextField events;
-	private JTextField notes;
-	private JTextField roomNum;
-	private JTextField PCP;
 	private JButton editButton;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextArea textArea;
+	private JTextArea textArea_1;
+	private JTextField textField_3;
 	
 
 	/**
@@ -62,18 +63,12 @@ public class PatientData {
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setTitle("Patient Data");
+		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setFont(new Font("Cambria", Font.PLAIN, 11));
 		frame.setBounds(100, 100, 450, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
-		
-		patientName = new JTextField(args[0]);
-		patientName.setEditable(false);
-		patientName.setFont(new Font("Cambria", Font.BOLD, 25));
-		patientName.setBounds(43, 4, 401, 35);
-		frame.getContentPane().add(patientName);
-		patientName.setColumns(10);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 46, 414, 2);
@@ -99,44 +94,10 @@ public class PatientData {
 		lblEvents.setBounds(10, 149, 55, 19);
 		frame.getContentPane().add(lblEvents);
 		
-		patientNum = new JTextField(args[1]);
-		patientNum.setEditable(false);
-		patientNum.setFont(new Font("Cambria", Font.PLAIN, 11));
-		patientNum.setBounds(104, 59, 340, 20);
-		frame.getContentPane().add(patientNum);
-		patientNum.setColumns(10);
-		
-		events = new JTextField(args[4]);
-		events.setEditable(false);
-		events.setFont(new Font("Cambria", Font.PLAIN, 11));
-		events.setBounds(10, 179, 434, 71);
-		frame.getContentPane().add(events);
-		events.setColumns(10);
-		
 		JLabel lblNotes = new JLabel("Notes:");
 		lblNotes.setFont(new Font("Cambria", Font.BOLD, 15));
 		lblNotes.setBounds(10, 261, 55, 19);
 		frame.getContentPane().add(lblNotes);
-		
-		notes = new JTextField(args[5]);
-		notes.setEditable(false);
-		notes.setColumns(10);
-		notes.setBounds(10, 291, 434, 71);
-		frame.getContentPane().add(notes);
-		
-		roomNum = new JTextField(args[2]);
-		roomNum.setEditable(false);
-		roomNum.setFont(new Font("Cambria", Font.PLAIN, 11));
-		roomNum.setColumns(10);
-		roomNum.setBounds(79, 90, 365, 20);
-		frame.getContentPane().add(roomNum);
-		
-		PCP = new JTextField(args[3]);
-		PCP.setEditable(false);
-		PCP.setFont(new Font("Cambria", Font.PLAIN, 11));
-		PCP.setColumns(10);
-		PCP.setBounds(190, 120, 254, 20);
-		frame.getContentPane().add(PCP);
 		
 		JButton backButton = new JButton("🔙");
 		backButton.addActionListener(new ActionListener() {
@@ -153,8 +114,8 @@ public class PatientData {
 		editButton = new JButton("Edit");
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditPatientData.main(args);
 				frame.dispose();
+				EditPatientData.main(args);
 			}
 		});
 		editButton.setBackground(new Color(255, 255, 255));
@@ -162,5 +123,39 @@ public class PatientData {
 		editButton.setMinimumSize(new Dimension (123, 29));
 		editButton.setMaximumSize(new Dimension (123, 29));
 		frame.getContentPane().add(editButton);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setColumns(10);
+		textField.setBounds(104, 54, 340, 31);
+		frame.getContentPane().add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		textField_1.setBounds(79, 84, 365, 31);
+		frame.getContentPane().add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setColumns(10);
+		textField_2.setBounds(191, 116, 253, 31);
+		frame.getContentPane().add(textField_2);
+		
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setBounds(10, 180, 434, 63);
+		frame.getContentPane().add(textArea);
+		
+		textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
+		textArea_1.setBounds(10, 292, 434, 63);
+		frame.getContentPane().add(textArea_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setEditable(false);
+		textField_3.setColumns(10);
+		textField_3.setBounds(42, 0, 402, 41);
+		frame.getContentPane().add(textField_3);
 	}
 }
