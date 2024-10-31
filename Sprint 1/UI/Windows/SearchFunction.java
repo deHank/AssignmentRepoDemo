@@ -158,5 +158,8 @@ public class SearchFunction {
 		}
 		frame.getContentPane().revalidate();
 		frame.getContentPane().repaint();
+		frame.revalidate();
+		frame.repaint();
+		frame.pack();
 	}
 }
