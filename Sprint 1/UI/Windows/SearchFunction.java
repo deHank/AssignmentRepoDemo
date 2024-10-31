@@ -87,15 +87,6 @@ public class SearchFunction {
 		dontDoAnything.setBounds(10, 110, 414, 192);
 		frame.getContentPane().add(dontDoAnything);
 		
-		JButton btnNewButton = new JButton("New button");
-		dontDoAnything.setRowHeaderView(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		dontDoAnything.setViewportView(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		dontDoAnything.setColumnHeaderView(btnNewButton_2);
-		
 		searchButton = new JButton("GO");
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
