@@ -115,8 +115,6 @@ class UserLogin:
             print("There is already an account with this SSN!")
          print("Please input a valid SSN") 
 
-      
-        
 
       # add additional fields. For now, I am only doing First/Last name, email, password, phone number, and SSN
 
