@@ -257,6 +257,20 @@ public class Main {
         }
     }
 
+    public static void addPtn(String [] newPtnInfo) throws SQLException {
+        String ptnInfo = new String[6];
+        //last name,first name, patient id, pcp id, diagnosis, gender
+        for (int i = 0; i < newPtnInfo.length; i++) {
+            ptnInfo[i] = newPtnInfo[i];
+        }
+        String sql = "INSERT INTO patients (first_name, last_name, patient_id, attending_physician, diagnosis, gender) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection connect = DatabaseConnection.getConnection();
+        PreparedStatement stmt = connect.preparedStatement(sql);
+        ResultSet rs = stmt.executeQuery()) {
+            //find patient here and insert using seedPhysicians as a guide
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
         PatientType patient = new PatientType();
         showmenu1();
