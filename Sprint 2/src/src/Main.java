@@ -257,8 +257,9 @@ public class Main {
         }
     }
 
+    //new method for adding patient, Eli call this
     public static void addPtn(String [] newPtnInfo) throws SQLException {
-        String ptnInfo = new String[6];
+        //String ptnInfo = new String[6];
         //last name,first name, patient id, pcp id, diagnosis, gender
         for (int i = 0; i < newPtnInfo.length; i++) {
             ptnInfo[i] = newPtnInfo[i];
@@ -286,18 +287,45 @@ public class Main {
 
                 }
             }
-            addstmt.setString(1, newPtnInfo[1]);
-            addstmt.setString(2, newPtnInfo[0]);
-            addstmt.setString(3, newPatientId);
-            addstmt.setString(4, newPtnInfo[3]);
-            addstmt.setString(5, newPtnInfo[4]);
-            addstmt.setString(6, newPtnInfo[5]);
+            addstmt.setString(1, newPtnInfo[1]);//first name
+            addstmt.setString(2, newPtnInfo[0]);//last name
+            addstmt.setString(3, newPatientId);//patient id
+            addstmt.setString(4, newPtnInfo[3]);//pcp id
+            addstmt.setString(5, newPtnInfo[4]);//Diagnosis
+            addstmt.setString(6, newPtnInfo[5]);//Gender
 
             int rowsAffected = addstmt.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Ptn added");
             } else {
                 System.out.println("Ptn not added");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //new method for updating patient in database, Eli call this
+    public static void updatePtn(String [] newPtnInfo) throws SQLException {
+        //last name,first name, patient id, pcp id, diagnosis, gender
+        String updateQuery = "UPDATE patients SET first_name = ?, last_name = ?, attending_physician = ?, diagnosis = ?, gender = ? WHERE id = ?";
+
+        try (Connection connect = DatabaseConnection.getConnection();
+        PreparedStatement updateStmt = connect.prepareStatement(updateQuery)) {
+
+            //Set parameters based on ptnInfo array
+            updateStmt.setString(1, newPtnInfo[1]);//first name
+            updateStmt.setString(2, newPtnInfo[0]);//last name
+            updateStmt.setString(3, newPtnInfo[2]);//patient id
+            updateStmt.setString(4, newPtnInfo[3]);//pcp
+            updateStmt.setString(5, newPtnInfo[4]);//diagnosis
+            updateStmt.setString(6, newPtnInfo[5]);//gender
+
+            int rowsUpdated = updateStmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Ptn updated");
+            } else {
+                System.out.println("Ptn not updated");
             }
         } catch (SQLException e) {
             e.printStackTrace();
