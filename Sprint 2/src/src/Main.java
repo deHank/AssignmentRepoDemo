@@ -332,6 +332,30 @@ public class Main {
         }
     }
 
+    public static String getNextPatientId() throws SQLException {
+        String getMaxIdQuery = "SELECT MAX(patient_id) FROM Patients";
+        String nextPatientId = "0001"; // Default ID if no patients exist
+
+        try (Connection connect = DatabaseConnection.getConnection();
+             PreparedStatement getMaxIdStmt = connect.prepareStatement(getMaxIdQuery)) {
+
+            try (ResultSet rs = getMaxIdStmt.executeQuery()) {
+                if (rs.next() && rs.getString(1) != null) {
+                    // Get the highest patient ID and increment it
+                    String maxIdStr = rs.getString(1);
+                    int maxId = Integer.parseInt(maxIdStr);
+                    nextPatientId = String.format("%04d", maxId + 1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+        return nextPatientId;
+    }
+
+
     public static void main(String[] args) throws SQLException {
         PatientType patient = new PatientType();
         showmenu1();
