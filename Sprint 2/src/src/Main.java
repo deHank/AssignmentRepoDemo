@@ -263,11 +263,44 @@ public class Main {
         for (int i = 0; i < newPtnInfo.length; i++) {
             ptnInfo[i] = newPtnInfo[i];
         }
-        String sql = "INSERT INTO patients (first_name, last_name, patient_id, attending_physician, diagnosis, gender) VALUES (?, ?, ?, ?, ?, ?)";
+        String add = "INSERT INTO patients (first_name, last_name, patient_id, attending_physician, diagnosis, gender) VALUES (?, ?, ?, ?, ?, ?)";
+        String search = "SELECT * FROM Patients WHERE patient_id = ? LIMIT 10";
+        String getMaxIdQuery = "SELECT MAX(patient_id) FROM Patients";
+
         try (Connection connect = DatabaseConnection.getConnection();
-        PreparedStatement stmt = connect.preparedStatement(sql);
-        ResultSet rs = stmt.executeQuery()) {
-            //find patient here and insert using seedPhysicians as a guide
+        PreparedStatement searchstmt = connect.preparedStatement(search);
+        PreparedStatement getMaxIdStmt = connect.preparedStatement(getMaxIdQuery);
+        PreparedStatement addstmt = connect.preparedStatement(add)){
+
+            //search.setString(1,ptnInfo[2]);
+            String newPatientId = "001";
+
+            try (ResultSet rs = getMaxIdStmt.executeQuery()) {
+                //find patient here and insert using seedPhysicians as a guide
+                if (rs.next() && rs.getString(1) != null) {
+                    //System.out.println("Ptn already exists");
+                    String maxIdStr = rs.getString(1);
+
+                    int maxId = Integer.parseInt(maxIdStr);
+                    newPatientId = String.format("%04d", maxId + 1);
+
+                }
+            }
+            addstmt.setString(1, newPtnInfo[1]);
+            addstmt.setString(2, newPtnInfo[0]);
+            addstmt.setString(3, newPatientId);
+            addstmt.setString(4, newPtnInfo[3]);
+            addstmt.setString(5, newPtnInfo[4]);
+            addstmt.setString(6, newPtnInfo[5]);
+
+            int rowsAffected = addstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Ptn added");
+            } else {
+                System.out.println("Ptn not added");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
