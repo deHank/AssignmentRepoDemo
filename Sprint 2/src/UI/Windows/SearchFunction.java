@@ -126,12 +126,11 @@ public class SearchFunction {
             public void actionPerformed(ActionEvent e) {
 				String searchType = (String) advList.getSelectedItem();
 				String searchParam = searchBar.getText();
-				//TODO
 				try {
 					String names[] = Main.searchSelect(searchType, searchParam);
 					populateScrollPane(names);
-				} catch (Exception except) {
-					System.out.println(except.getMessage());
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 				// String names[] = {"Doe John 1", "Doe John 1", "Doe John 1", "Doe John 1", "Doe John 1"};
             }
@@ -150,8 +149,8 @@ public class SearchFunction {
 					String patientData[] = Main.ptnSelected(concatenatedData);
 					PatientData.main(patientData);
 					frame.dispose();
-				} catch (Exception except) {
-					System.out.println(except.getMessage());
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

@@ -64,9 +64,9 @@ public class HomePage {
 		addPatientButton.setFont(new Font("Cambria", Font.BOLD, 35));
 		addPatientButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//String MRN[] = getMaxMRN();
-				// EditPatientData.main(MRN);
-				EditPatientData.main(null);
+				String mrn[1] = [getNextPatientId()];
+				EditPatientData.main(mrn);
+				// EditPatientData.main(null);
 				frame.dispose();
 			}
 		});

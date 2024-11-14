@@ -161,7 +161,7 @@ public class EditPatientData {
 					frmEditPatientData.dispose();
 					String[] args2 = updateArgs();
 					if(isGoodFormat(args2)){
-						//addPatient(args2);
+						addPtn(args2);
 						exitOrNo.main(args2);
 					}
 					else{
@@ -189,7 +189,7 @@ public class EditPatientData {
 				public void actionPerformed(ActionEvent e) {
 					String[] newArgs = updateArgs();
 					if(isGoodFormat(newArgs)){
-						//ADD PATIENT DATA
+						addPtn(newArgs);
 						HomePage.main();
 						frmEditPatientData.dispose();
 					}
@@ -201,7 +201,7 @@ public class EditPatientData {
 				public void actionPerformed(ActionEvent e) {
 					String[] newArgs = updateArgs();
 					if(isGoodFormat(newArgs)){
-						//UPDATE PATIENT DATA
+						updatePtn(newArgs);
 						PatientData.main(newArgs);
 						frmEditPatientData.dispose();
 					}

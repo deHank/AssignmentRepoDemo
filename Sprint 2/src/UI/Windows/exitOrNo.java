@@ -76,7 +76,7 @@ public class exitOrNo{
 		exAndSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(args.length == 6){
-					//ADD PATIENT CALL
+					addPtn(args);
 					HomePage.main();
 					frame.dispose();
 				}
