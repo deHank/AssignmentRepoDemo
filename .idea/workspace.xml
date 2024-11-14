@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="349e7271-8cd6-4a9a-9ff6-e0b08e139edb" name="Changes" comment="All systems combined&#10;&#10;Ryan is preparing to test">
+    <list default="true" id="349e7271-8cd6-4a9a-9ff6-e0b08e139edb" name="Changes" comment="Added full functionality for patient edit method in main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +17,11 @@
       <list>
         <option value="Elijah.Borum &lt;elijah.borum@gmail.com&gt;" />
       </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
@@ -36,13 +41,18 @@
     "Application.HomePage.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.TestConnection.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "Maven..executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Sprint-2-UI",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.archetype.catalogs",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -50,6 +60,28 @@
       <recent name="C:\Users\rbrad\IdeaProjects\355GroupProject\Sprint 1\src" />
       <recent name="C:\Users\rbrad\IdeaProjects\355GroupProject\Sprint 1\src\src" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.Main" />
+      <module name="355GroupProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,6 +91,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730130433665</updated>
+      <workItem from="1731441145375" duration="1466000" />
+      <workItem from="1731455350362" duration="231000" />
     </task>
     <task id="LOCAL-00001" summary="All systems combined&#10;&#10;Ryan is preparing to test">
       <option name="closed" value="true" />
@@ -68,8 +102,27 @@
       <option name="project" value="LOCAL" />
       <updated>1730497486632</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added full functionality for patient added method in main">
+      <option name="closed" value="true" />
+      <created>1731469839998</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731469839998</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added full functionality for patient edit method in main">
+      <option name="closed" value="true" />
+      <created>1731474687803</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731474687803</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -84,6 +137,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="All systems combined&#10;&#10;Ryan is preparing to test" />
-    <option name="LAST_COMMIT_MESSAGE" value="All systems combined&#10;&#10;Ryan is preparing to test" />
+    <MESSAGE value="Added full functionality for patient added method in main" />
+    <MESSAGE value="Added full functionality for patient edit method in main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added full functionality for patient edit method in main" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

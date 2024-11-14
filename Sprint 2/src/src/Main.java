@@ -257,6 +257,105 @@ public class Main {
         }
     }
 
+    //new method for adding patient, Eli call this
+    public static void addPtn(String [] newPtnInfo) throws SQLException {
+        //String ptnInfo = new String[6];
+        //last name,first name, patient id, pcp id, diagnosis, gender
+        for (int i = 0; i < newPtnInfo.length; i++) {
+            ptnInfo[i] = newPtnInfo[i];
+        }
+        String add = "INSERT INTO patients (first_name, last_name, patient_id, attending_physician, diagnosis, gender) VALUES (?, ?, ?, ?, ?, ?)";
+        String search = "SELECT * FROM Patients WHERE patient_id = ? LIMIT 10";
+        String getMaxIdQuery = "SELECT MAX(patient_id) FROM Patients";
+
+        try (Connection connect = DatabaseConnection.getConnection();
+        PreparedStatement searchstmt = connect.preparedStatement(search);
+        PreparedStatement getMaxIdStmt = connect.preparedStatement(getMaxIdQuery);
+        PreparedStatement addstmt = connect.preparedStatement(add)){
+
+            //search.setString(1,ptnInfo[2]);
+            String newPatientId = "001";
+
+            try (ResultSet rs = getMaxIdStmt.executeQuery()) {
+                //find patient here and insert using seedPhysicians as a guide
+                if (rs.next() && rs.getString(1) != null) {
+                    //System.out.println("Ptn already exists");
+                    String maxIdStr = rs.getString(1);
+
+                    int maxId = Integer.parseInt(maxIdStr);
+                    newPatientId = String.format("%04d", maxId + 1);
+
+                }
+            }
+            addstmt.setString(1, newPtnInfo[1]);//first name
+            addstmt.setString(2, newPtnInfo[0]);//last name
+            addstmt.setString(3, newPatientId);//patient id
+            addstmt.setString(4, newPtnInfo[3]);//pcp id
+            addstmt.setString(5, newPtnInfo[4]);//Diagnosis
+            addstmt.setString(6, newPtnInfo[5]);//Gender
+
+            int rowsAffected = addstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Ptn added");
+            } else {
+                System.out.println("Ptn not added");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //new method for updating patient in database, Eli call this
+    public static void updatePtn(String [] newPtnInfo) throws SQLException {
+        //last name,first name, patient id, pcp id, diagnosis, gender
+        String updateQuery = "UPDATE patients SET first_name = ?, last_name = ?, attending_physician = ?, diagnosis = ?, gender = ? WHERE id = ?";
+
+        try (Connection connect = DatabaseConnection.getConnection();
+        PreparedStatement updateStmt = connect.prepareStatement(updateQuery)) {
+
+            //Set parameters based on ptnInfo array
+            updateStmt.setString(1, newPtnInfo[1]);//first name
+            updateStmt.setString(2, newPtnInfo[0]);//last name
+            updateStmt.setString(3, newPtnInfo[2]);//patient id
+            updateStmt.setString(4, newPtnInfo[3]);//pcp
+            updateStmt.setString(5, newPtnInfo[4]);//diagnosis
+            updateStmt.setString(6, newPtnInfo[5]);//gender
+
+            int rowsUpdated = updateStmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Ptn updated");
+            } else {
+                System.out.println("Ptn not updated");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getNextPatientId() throws SQLException {
+        String getMaxIdQuery = "SELECT MAX(patient_id) FROM Patients";
+        String nextPatientId = "0001"; // Default ID if no patients exist
+
+        try (Connection connect = DatabaseConnection.getConnection();
+             PreparedStatement getMaxIdStmt = connect.prepareStatement(getMaxIdQuery)) {
+
+            try (ResultSet rs = getMaxIdStmt.executeQuery()) {
+                if (rs.next() && rs.getString(1) != null) {
+                    // Get the highest patient ID and increment it
+                    String maxIdStr = rs.getString(1);
+                    int maxId = Integer.parseInt(maxIdStr);
+                    nextPatientId = String.format("%04d", maxId + 1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+        return nextPatientId;
+    }
+
+
     public static void main(String[] args) throws SQLException {
         PatientType patient = new PatientType();
         showmenu1();
