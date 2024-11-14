@@ -265,7 +265,7 @@ public class EditPatientData {
 	private Boolean checkRoom(String room){
 		try{
 			int roomNum = (int) room;
-			if(!(roomNum < 101 && roomNum > 0)){
+			if(!(roomNum < 110 && roomNum > 99)){
 				throw Exception;
 			}
 			return true;
