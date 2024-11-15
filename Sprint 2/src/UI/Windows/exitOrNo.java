@@ -60,7 +60,7 @@ public class exitOrNo{
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(args.length == 6){
-					HomePage.main();
+					HomePage.main(null);
 					frame.dispose();
 				}
 				else{
@@ -76,9 +76,13 @@ public class exitOrNo{
 		exAndSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(args.length == 6){
-					addPtn(args);
-					HomePage.main();
-					frame.dispose();
+					try {
+						Main.addPtn(args);
+						HomePage.main(null);
+						frame.dispose();
+					} catch (Exception exception) {
+						// TODO: handle exception
+					}
 				}
 				else{
 					String newArgs[] = {args[6], args[7], args[8], args[9], args[10], args[11]};

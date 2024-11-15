@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
+import javax.swing.JOptionPane;
 
 import UI.Parts.Button;
 import src.Main;
@@ -129,8 +130,8 @@ public class SearchFunction {
 				try {
 					String names[] = Main.searchSelect(searchType, searchParam);
 					populateScrollPane(names);
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+				} catch (Exception exception) {
+					JOptionPane.showMessageDialog(null, exception.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 				// String names[] = {"Doe John 1", "Doe John 1", "Doe John 1", "Doe John 1", "Doe John 1"};
             }
@@ -149,8 +150,8 @@ public class SearchFunction {
 					String patientData[] = Main.ptnSelected(concatenatedData);
 					PatientData.main(patientData);
 					frame.dispose();
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+				} catch (Exception exception) {
+					JOptionPane.showMessageDialog(null, exception.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

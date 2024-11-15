@@ -161,8 +161,13 @@ public class EditPatientData {
 					frmEditPatientData.dispose();
 					String[] args2 = updateArgs();
 					if(isGoodFormat(args2)){
-						addPtn(args2);
-						exitOrNo.main(args2);
+						try {
+							Main.addPtn(args2);
+							exitOrNo.main(args2);
+							frmEditPatientData.dispose();
+						} catch (Exception exception) {
+							// TODO: handle exception
+						}
 					}
 					else{
 						exitWithoutSaving.main(args2);
@@ -189,9 +194,13 @@ public class EditPatientData {
 				public void actionPerformed(ActionEvent e) {
 					String[] newArgs = updateArgs();
 					if(isGoodFormat(newArgs)){
-						addPtn(newArgs);
-						HomePage.main();
-						frmEditPatientData.dispose();
+						try {
+							Main.addPtn(newArgs);
+							HomePage.main(null);
+							frmEditPatientData.dispose();
+						} catch (Exception exception) {
+							// TODO: handle exception
+						}
 					}
 				}
 			});
@@ -201,9 +210,13 @@ public class EditPatientData {
 				public void actionPerformed(ActionEvent e) {
 					String[] newArgs = updateArgs();
 					if(isGoodFormat(newArgs)){
-						updatePtn(newArgs);
-						PatientData.main(newArgs);
-						frmEditPatientData.dispose();
+						try {
+							Main.updatePtn(newArgs);
+							PatientData.main(newArgs);
+							frmEditPatientData.dispose();
+						} catch (Exception exception) {
+							// TODO: handle exception
+						}
 					}
 				}
 			});
@@ -231,14 +244,15 @@ public class EditPatientData {
 	}
 
 	protected Boolean isGoodFormat(String[] args2){
-		return checkName() && checkPCP() && checkRoom();
+		return checkName(args2[0]) && checkPCP(args2[3]) && checkRoom(args2[2]);
 	}
 
 	private Boolean checkName(String name){
 		try{
 			String splitName[] = name.split(" ");
 			if(!(splitName.length == 2)){
-				throw Exception;
+				JOptionPane.showMessageDialog(null, "Name must inclue Last Name and First Name separated by a single space", "ERROR", JOptionPane.ERROR_MESSAGE);
+				return false;
 			}
 			return true;
 		}
@@ -250,9 +264,10 @@ public class EditPatientData {
 
 	private Boolean checkPCP(String PCP){
 		try{
-			int PCPnum = (int) PCP;
+			int PCPnum = Integer.parseInt(PCP);
 			if(!(PCPnum < 11 && PCPnum > 0)){
-				throw Exception;
+				JOptionPane.showMessageDialog(null, "PCP must be an integer between 1 and 10", "ERROR", JOptionPane.ERROR_MESSAGE);
+				return false;
 			}
 			return true;
 		}
@@ -264,9 +279,10 @@ public class EditPatientData {
 
 	private Boolean checkRoom(String room){
 		try{
-			int roomNum = (int) room;
+			int roomNum = Integer.parseInt(room);
 			if(!(roomNum < 110 && roomNum > 99)){
-				throw Exception;
+				JOptionPane.showMessageDialog(null, "Room number must be an integer value between 1 and 100", "ERROR", JOptionPane.ERROR_MESSAGE);
+				return false;
 			}
 			return true;
 		}

@@ -1,5 +1,13 @@
 package src;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -259,7 +267,7 @@ public class Main {
 
     //new method for adding patient, Eli call this
     public static void addPtn(String [] newPtnInfo) throws SQLException {
-        //String ptnInfo = new String[6];
+        String ptnInfo[] = new String[6];
         //last name,first name, patient id, pcp id, diagnosis, gender
         for (int i = 0; i < newPtnInfo.length; i++) {
             ptnInfo[i] = newPtnInfo[i];
@@ -269,9 +277,9 @@ public class Main {
         String getMaxIdQuery = "SELECT MAX(patient_id) FROM Patients";
 
         try (Connection connect = DatabaseConnection.getConnection();
-        PreparedStatement searchstmt = connect.preparedStatement(search);
-        PreparedStatement getMaxIdStmt = connect.preparedStatement(getMaxIdQuery);
-        PreparedStatement addstmt = connect.preparedStatement(add)){
+        PreparedStatement searchstmt = connect.prepareStatement(search);
+        PreparedStatement getMaxIdStmt = connect.prepareStatement(getMaxIdQuery);
+        PreparedStatement addstmt = connect.prepareStatement(add)){
 
             //search.setString(1,ptnInfo[2]);
             String newPatientId = "001";

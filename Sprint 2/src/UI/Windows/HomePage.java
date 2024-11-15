@@ -16,6 +16,8 @@ import javax.swing.Action;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import src.Main;
+
 public class HomePage {
 
 	private JFrame frame;
@@ -64,10 +66,14 @@ public class HomePage {
 		addPatientButton.setFont(new Font("Cambria", Font.BOLD, 35));
 		addPatientButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String mrn[1] = [getNextPatientId()];
-				EditPatientData.main(mrn);
+				try {
+					String mrn[] = {Main.getNextPatientId()};
+					EditPatientData.main(mrn);
+					frame.dispose();
+				} catch (Exception exception) {
+					// TODO: handle exception
+				}
 				// EditPatientData.main(null);
-				frame.dispose();
 			}
 		});
 		

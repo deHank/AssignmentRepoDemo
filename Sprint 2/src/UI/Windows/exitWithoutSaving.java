@@ -14,8 +14,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
-import src.Main;
-
 public class exitWithoutSaving{
 
 	private JFrame frame;
@@ -59,7 +57,7 @@ public class exitWithoutSaving{
 		frame.getContentPane().add(exitButton);
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-                HomePage.main();
+                HomePage.main(null);
                 frame.dispose();
 			}
 		});
