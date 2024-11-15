@@ -281,6 +281,13 @@ public class Main {
         PreparedStatement getMaxIdStmt = connect.prepareStatement(getMaxIdQuery);
         PreparedStatement addstmt = connect.prepareStatement(add)){
 
+// Parse full name into first name and last name
+        String fullName = newPtnInfo[0];
+        String[] nameParts = fullName.split(" ", 2);
+        String lastName = nameParts[0];
+        String firstName = nameParts.length > 1 ? nameParts[1] : "";
+
+
             //search.setString(1,ptnInfo[2]);
             String newPatientId = "001";
 
@@ -303,8 +310,8 @@ public class Main {
             //4 events (ignore for now)
             //5 diagnosis
 
-            addstmt.setString(1, newPtnInfo[1]);//first name
-            addstmt.setString(2, newPtnInfo[0]);//last name
+            addstmt.setString(1, firstName);//first name
+            addstmt.setString(2, lastName);//last name
             addstmt.setString(3, newPatientId);//patient id
             addstmt.setString(4, newPtnInfo[3]);//pcp id
             addstmt.setString(5, newPtnInfo[4]);//Diagnosis
