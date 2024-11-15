@@ -313,9 +313,9 @@ public class Main {
             addstmt.setString(1, firstName);//first name
             addstmt.setString(2, lastName);//last name
             addstmt.setString(3, newPatientId);//patient id
-            addstmt.setString(4, newPtnInfo[3]);//pcp id
-            addstmt.setString(5, newPtnInfo[4]);//Diagnosis
-            addstmt.setString(6, newPtnInfo[5]);//Gender
+            addstmt.setString(4, newPtnInfo[2]);//pcp id
+            addstmt.setString(5, newPtnInfo[3]);//Diagnosis
+            addstmt.setString(6, newPtnInfo[4]);//Gender
 
             int rowsAffected = addstmt.executeUpdate();
             if (rowsAffected > 0) {
