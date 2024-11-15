@@ -16,7 +16,7 @@ import javax.swing.Action;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
-import src.Main;
+import src.*;
 
 public class HomePage {
 
@@ -67,7 +67,7 @@ public class HomePage {
 		addPatientButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String mrn[] = {Main.getNextPatientId()};
+					String mrn[] = {src.Main.getNextPatientId()};
 					EditPatientData.main(mrn);
 					frame.dispose();
 				} catch (Exception exception) {

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="349e7271-8cd6-4a9a-9ff6-e0b08e139edb" name="Changes" comment="Added full functionality for patient edit method in main">
+      <change beforePath="$PROJECT_DIR$/.idea/355GroupProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/355GroupProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/EditPatientData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/EditPatientData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprint 2/src/src/DatabaseOutline.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/src/DatabaseOutline.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprint 2/src/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,13 +51,16 @@
     "Application.Unnamed.executor": "Run",
     "Maven..executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Sprint-2-UI",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.archetype.catalogs",
     "vue.rearranger.settings.migration": "true"
   }
@@ -93,6 +103,8 @@
       <updated>1730130433665</updated>
       <workItem from="1731441145375" duration="1466000" />
       <workItem from="1731455350362" duration="231000" />
+      <workItem from="1731632055811" duration="172000" />
+      <workItem from="1731703461936" duration="1800000" />
     </task>
     <task id="LOCAL-00001" summary="All systems combined&#10;&#10;Ryan is preparing to test">
       <option name="closed" value="true" />

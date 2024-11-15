@@ -116,6 +116,8 @@ public class EditPatientData {
 		frmEditPatientData.getContentPane().add(saveButton);
 
 		setup(args);
+		backButtonFunctionality(args);
+		saveButtonFunctionality(args);
 		
 		eventsBox.setBounds(10, 180, 434, 63);
 		frmEditPatientData.getContentPane().add(eventsBox);
@@ -199,7 +201,7 @@ public class EditPatientData {
 							HomePage.main(null);
 							frmEditPatientData.dispose();
 						} catch (Exception exception) {
-							// TODO: handle exception
+							JOptionPane.showMessageDialog(null, "Error with Nick's stuff", "ERROR", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 				}
@@ -215,7 +217,7 @@ public class EditPatientData {
 							PatientData.main(newArgs);
 							frmEditPatientData.dispose();
 						} catch (Exception exception) {
-							// TODO: handle exception
+							JOptionPane.showMessageDialog(null, "Error with Nick's stuff", "ERROR", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 				}
@@ -227,7 +229,7 @@ public class EditPatientData {
 		if(args == null){}
 		else if(args.length == 1){
 			patientName = new JTextField();
-			idenNum = new JTextField();
+			idenNum = new JTextField(args[0]);
 			roomNum = new JTextField();
 			PCPBox = new JTextField();
 			eventsBox = new JTextArea();

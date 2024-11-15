@@ -295,6 +295,14 @@ public class Main {
 
                 }
             }
+            //TODO ALIGN SQL STATEMENT WITH PASSED ARRAY
+            //0 lastname firstname  (needs to be parsed)
+            //1 patient id
+            //2 room number
+            //3 pcp id
+            //4 events (ignore for now)
+            //5 diagnosis
+
             addstmt.setString(1, newPtnInfo[1]);//first name
             addstmt.setString(2, newPtnInfo[0]);//last name
             addstmt.setString(3, newPatientId);//patient id
