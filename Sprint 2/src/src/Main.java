@@ -313,9 +313,10 @@ public class Main {
             addstmt.setString(1, firstName);//first name
             addstmt.setString(2, lastName);//last name
             addstmt.setString(3, newPatientId);//patient id
-            addstmt.setString(4, newPtnInfo[2]);//pcp id
-            addstmt.setString(5, newPtnInfo[3]);//Diagnosis
-            addstmt.setString(6, newPtnInfo[4]);//Gender
+            addstmt.setString(4, newPtnInfo[2]); //room num
+            addstmt.setString(4, newPtnInfo[3]);//pcp id
+            addstmt.setString(5, newPtnInfo[4]);//Diagnosis
+            addstmt.setString(6, newPtnInfo[5]);//Gender
 
             int rowsAffected = addstmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -336,12 +337,26 @@ public class Main {
         try (Connection connect = DatabaseConnection.getConnection();
         PreparedStatement updateStmt = connect.prepareStatement(updateQuery)) {
 
+        String[] nameParts = parseName(newPtnInfo[0]); // Assuming newPtnInfo[0] contains "LastName FirstName"
+        String lastName = nameParts[0];
+        String firstName = nameParts[1];
+
+
+                        //TODO ALIGN SQL STATEMENT WITH PASSED ARRAY
+            //0 lastname firstname  (needs to be parsed)
+            //1 patient id
+            //2 room number
+            //3 pcp id
+            //4 events (ignore for now)
+            //5 diagnosis
+            
             //Set parameters based on ptnInfo array
-            updateStmt.setString(1, newPtnInfo[1]);//first name
-            updateStmt.setString(2, newPtnInfo[0]);//last name
-            updateStmt.setString(3, newPtnInfo[2]);//patient id
-            updateStmt.setString(4, newPtnInfo[3]);//pcp
-            updateStmt.setString(5, newPtnInfo[4]);//diagnosis
+            updateStmt.setString(1, firstName);//first name
+            updateStmt.setString(2, lastName);//last name
+            updateStmt.setString(3, newPtnInfo[1]);//patient id
+            updateStmt.setString(4, newPtnInfo[2]);//room number
+            updateStmt.setString(5, newPtnInfo[3]);//pcp
+            updateStmt.setString(6, newPtnInfo[4]);//diagnosis
             updateStmt.setString(6, newPtnInfo[5]);//gender
 
             int rowsUpdated = updateStmt.executeUpdate();
