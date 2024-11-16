@@ -272,7 +272,7 @@ public class Main {
         for (int i = 0; i < newPtnInfo.length; i++) {
             ptnInfo[i] = newPtnInfo[i];
         }
-        String add = "INSERT INTO patients (first_name, last_name, patient_id, attending_physician, diagnosis, gender) VALUES (?, ?, ?, ?, ?, ?)";
+        String add = "INSERT INTO patients (first_name, last_name, patient_id, room_number, attending_physician, diagnosis, gender) VALUES (?, ?, ?, ?, ?, ?, ?)";
         String search = "SELECT * FROM Patients WHERE patient_id = ? LIMIT 10";
         String getMaxIdQuery = "SELECT MAX(patient_id) FROM Patients";
 
