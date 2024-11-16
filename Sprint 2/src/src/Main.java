@@ -393,6 +393,12 @@ public class Main {
         return nextPatientId;
     }
 
+    private static String[] parseName(String fullName) {
+    String[] nameParts = fullName.split(" ", 2);
+    String lastName = nameParts[0];
+    String firstName = nameParts.length > 1 ? nameParts[1] : "";
+    return new String[]{lastName, firstName};
+}
 
     public static void main(String[] args) throws SQLException {
         PatientType patient = new PatientType();
