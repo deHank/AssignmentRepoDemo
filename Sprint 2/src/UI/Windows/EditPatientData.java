@@ -283,13 +283,13 @@ public class EditPatientData {
 		try{
 			int roomNum = Integer.parseInt(room);
 			if(!(roomNum < 110 && roomNum > 99)){
-				JOptionPane.showMessageDialog(null, "Room number must be an integer value between 1 and 100", "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Room number must be an integer value within 100 and 109", "ERROR", JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
 			return true;
 		}
 		catch(Exception e){
-			JOptionPane.showMessageDialog(null, "Room number must be an integer value between 1 and 100", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Room number must be an integer value within 100 and 109", "ERROR", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 	}

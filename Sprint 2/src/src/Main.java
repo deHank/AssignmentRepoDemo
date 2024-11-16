@@ -1,9 +1,6 @@
 package src;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +8,7 @@ import java.util.List;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 
@@ -272,7 +270,7 @@ public class Main {
         for (int i = 0; i < newPtnInfo.length; i++) {
             ptnInfo[i] = newPtnInfo[i];
         }
-        String add = "INSERT INTO patients (first_name, last_name, patient_id, room_number, attending_physician, diagnosis, gender) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String add = "INSERT INTO patients (first_name, last_name, patient_id, room_number, attending_physician, diagnosis, admission_date, discharge_date, date_of_birth) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String search = "SELECT * FROM Patients WHERE patient_id = ? LIMIT 10";
         String getMaxIdQuery = "SELECT MAX(patient_id) FROM Patients";
 
@@ -309,14 +307,29 @@ public class Main {
             //3 pcp id
             //4 events (ignore for now)
             //5 diagnosis
+            String roomNum = newPtnInfo[2];
+            Random random = new Random();
+            Date admissionDate = new Date(System.currentTimeMillis() - (random.nextInt(10) * 24L * 60L * 60L * 1000L));
+            Date dischargeDate = random.nextBoolean() ? new Date(admissionDate.getTime() + (random.nextInt(5) * 24L * 60L * 60L * 1000L)) : null; // Within 5 days or null
+            Date dateOfBirth = new Date(System.currentTimeMillis() - ((random.nextInt(60) + 20) * 365L * 24 * 60 * 60 * 1000L + random.nextInt(365) * 24L * 60 * 60 * 1000L)); // Age 20-80 with more variation
+
+
 
             addstmt.setString(1, firstName);//first name
             addstmt.setString(2, lastName);//last name
             addstmt.setString(3, newPatientId);//patient id
-            addstmt.setString(4, newPtnInfo[2]); //room num
-            addstmt.setString(4, newPtnInfo[3]);//pcp id
-            addstmt.setString(5, newPtnInfo[4]);//Diagnosis
-            addstmt.setString(6, newPtnInfo[5]);//Gender
+            addstmt.setString(4, roomNum); //room num
+            addstmt.setString(5, newPtnInfo[3]);//pcp id
+            addstmt.setString(6, newPtnInfo[4]);//Diagnosis
+            addstmt.setDate(7, admissionDate);
+            if (dischargeDate != null) {
+                addstmt.setDate(8, dischargeDate);
+            } else {
+                addstmt.setNull(8, java.sql.Types.DATE);
+            }
+            addstmt.setDate(9, dateOfBirth);
+
+
 
             int rowsAffected = addstmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -332,7 +345,7 @@ public class Main {
     //new method for updating patient in database, Eli call this
     public static void updatePtn(String [] newPtnInfo) throws SQLException {
         //last name,first name, patient id, pcp id, diagnosis, gender
-        String updateQuery = "UPDATE patients SET first_name = ?, last_name = ?, attending_physician = ?, diagnosis = ?, gender = ? WHERE id = ?";
+        String updateQuery = "UPDATE patients SET first_name = ?, last_name = ?, attending_physician = ?, diagnosis = ?, gender = ?, room_number = ? WHERE patient_id = ?";
 
         try (Connection connect = DatabaseConnection.getConnection();
         PreparedStatement updateStmt = connect.prepareStatement(updateQuery)) {
@@ -349,15 +362,21 @@ public class Main {
             //3 pcp id
             //4 events (ignore for now)
             //5 diagnosis
-            
+            String patient_id = newPtnInfo[1];
+            String roomNum = newPtnInfo[2];
+            String pcp = newPtnInfo[3];
+            String diagnosis = newPtnInfo[4];
+            String gender = newPtnInfo[5];
+
+
             //Set parameters based on ptnInfo array
             updateStmt.setString(1, firstName);//first name
             updateStmt.setString(2, lastName);//last name
-            updateStmt.setString(3, newPtnInfo[1]);//patient id
-            updateStmt.setString(4, newPtnInfo[2]);//room number
-            updateStmt.setString(5, newPtnInfo[3]);//pcp
-            updateStmt.setString(6, newPtnInfo[4]);//diagnosis
-            updateStmt.setString(6, newPtnInfo[5]);//gender
+            updateStmt.setString(3, pcp);//pcp id
+            updateStmt.setString(4, diagnosis);//Diagnosis
+            updateStmt.setString(5, gender);//gender
+            updateStmt.setString(6, roomNum);//room number
+            updateStmt.setString(7, patient_id);//patient id
 
             int rowsUpdated = updateStmt.executeUpdate();
             if (rowsUpdated > 0) {

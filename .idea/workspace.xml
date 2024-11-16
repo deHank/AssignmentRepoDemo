@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="349e7271-8cd6-4a9a-9ff6-e0b08e139edb" name="Changes" comment="Added full functionality for patient edit method in main">
-      <change beforePath="$PROJECT_DIR$/.idea/355GroupProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/355GroupProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="349e7271-8cd6-4a9a-9ff6-e0b08e139edb" name="Changes" comment="Got add patient frontend working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/EditPatientData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/EditPatientData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/UI/Windows/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprint 2/src/src/DatabaseOutline.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/src/DatabaseOutline.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sprint 2/src/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sprint 2/src/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +40,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.DataSeeder.executor": "Run",
+    "Application.EditPatientData.executor": "Debug",
     "Application.HomePage.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.TestConnection.executor": "Run",
@@ -104,7 +100,8 @@
       <workItem from="1731441145375" duration="1466000" />
       <workItem from="1731455350362" duration="231000" />
       <workItem from="1731632055811" duration="172000" />
-      <workItem from="1731703461936" duration="1800000" />
+      <workItem from="1731703461936" duration="1939000" />
+      <workItem from="1731716980813" duration="5953000" />
     </task>
     <task id="LOCAL-00001" summary="All systems combined&#10;&#10;Ryan is preparing to test">
       <option name="closed" value="true" />
@@ -130,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731474687803</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Got add patient frontend working">
+      <option name="closed" value="true" />
+      <created>1731705332181</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731705332181</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +156,58 @@
     <MESSAGE value="All systems combined&#10;&#10;Ryan is preparing to test" />
     <MESSAGE value="Added full functionality for patient added method in main" />
     <MESSAGE value="Added full functionality for patient edit method in main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added full functionality for patient edit method in main" />
+    <MESSAGE value="Got add patient frontend working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Got add patient frontend working" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/UI/Windows/EditPatientData.java</url>
+          <line>199</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/src/Main.java</url>
+          <line>282</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/src/Main.java</url>
+          <line>317</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/src/Main.java</url>
+          <line>291</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/src/Main.java</url>
+          <line>320</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/src/Main.java</url>
+          <line>309</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/src/Main.java</url>
+          <line>350</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Sprint 2/src/src/Main.java</url>
+          <line>345</line>
+          <properties class="src.Main" method="updatePtn">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
