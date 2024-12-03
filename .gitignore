@@ -1,0 +1,50 @@
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Random Ass .Class Files ###
+/AddPatient$1.class
+/AddPatient.class
+/GUI.class
+/HomePage$1.class
+/HomePage$2.class
+/HomePage$SwingAction.class
+/HomePage.class
+/LoginWindow$1.class
+/LoginWindow$2.class
+/LoginWindow$3.class
+/LoginWindow.class
+/PatientData$1.class
+/PatientData.class
+/RoomView$1.class
+/RoomView.class
+/SearchFunction$1.class
+/SearchFunction$2.class
+/SearchFunction.class
+/SearchPage.class
