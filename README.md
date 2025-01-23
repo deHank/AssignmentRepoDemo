@@ -1,6 +1,6 @@
 My groupmembers are:
 - Leiliani Clark
-- Trinity Tram
+- Trinitey Tran
 - Ayush Purankar
 - Thomas Yang
 
